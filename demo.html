@@ -1,0 +1,73 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css" href="plugin/codemirror/lib/codemirror.css">
+    <link rel="stylesheet" type="text/css" href="plugin/codemirror/theme/yonce.css">
+  </head>
+  <body>
+    <div class="grid-container">
+      <div class="header">
+        <h1 style="font-family: arial">PointZero</h1>
+      </div>
+      <div class="column-left" id="python-container">
+        <div style="width: 100%">
+          <textarea class="codemirror-textarea">
+# Enter some python code to translate
+def main():
+  for i in range(20):
+    if (i % 15):
+      print(i, "fizzbuzz")
+    elif i % 3 == 0:
+      print(i, "fizz")
+    elif i % 5 == 0:
+      print(i, "buzz")
+   	else:
+      print(i)</textarea>
+        </div>
+        <div>
+          <div class="buttons-row">
+            <button class="clear">Clear</button>
+            <button class="translate">Translate</button>
+          </div>
+        </div>
+      </div>
+      <div class="column-right" id="java-container">
+        <div style="width: 100%">
+          <textarea class="codemirror-textarea">
+import java.util.*;
+class FizzBuzz {
+    public static void main(String args[]) {
+        int n = 100;
+ 
+        for (int i=0; i&lt;20; i++) {
+            if (i%15==0)                                                
+                System.out.print(i + " fizzbuzz");
+            else if (i%3==0)    
+                System.out.print(i + " fizz");
+            else if (i%5==0)    
+                System.out.print(i + " buzz"); 
+            else
+                System.out.print(i);
+        }
+    }
+}</textarea>
+        </div>
+        <div>
+          <div class="buttons-row">
+            <button class="clear">Clear</button>
+            <button class="translate">Translate</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type="text/javascript" src="plugin/codemirror/lib/codemirror.js"></script>
+    <script type="text/javascript" src="plugin/codemirror/mode/python/python.js"></script>
+    <script type="text/javascript" src="plugin/codemirror/mode/clike/clike.js"></script>
+    <script type="text/javascript" src="plugin/codemirror/addon/edit/matchbrackets.js"></script>
+    <script type="text/javascript" src="plugin/codemirror/addon/edit/closebrackets.js"></script>
+    <script type="text/javascript" src="plugin/codemirror/addon/edit/trailingspace.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+  </body>
+</html>
