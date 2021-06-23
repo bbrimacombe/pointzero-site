@@ -3,11 +3,8 @@ const translateCode = async(query, language) => {
   // setIsLoading(true)
 
   const server = 'http://a54aab677b33441d9a97085671d4c591-3bd334809fe56d34.elb.us-west-1.amazonaws.com/pointzero/'
+  //const server = 'http://127.0.0.1:8000'
   console.log('Making PointZero API request')
-
-  query = JSON.stringify(query)
-    .replace(/^"|"$/g, "")  // Remove leading and trailing quotes created by stringify
-    .replace(/\\n/g, "\n")  // Match newline encoding in training data
 
   java = language == 'java' ? query : ''
   python = language == 'python' ? query : ''
