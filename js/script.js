@@ -2,11 +2,20 @@ const translateCode = async(query, language) => {
   // event.preventDefault()
   // setIsLoading(true)
 
-  const server = 'http://127.0.0.1:5000'
+  const server = 'http://a54aab677b33441d9a97085671d4c591-3bd334809fe56d34.elb.us-west-1.amazonaws.com/pointzero/'
   console.log('Making PointZero API request')
 
   query = JSON.stringify(query)
-  const res = await axios.get(`${server}/translate`, {params: {language, query}})
+    .replace(/^"|"$/g, "")  // Remove leading and trailing quotes created by stringify
+    .replace(/\\n/g, "\n")  // Match newline encoding in training data
+
+  java = language == 'java' ? query : ''
+  python = language == 'python' ? query : ''
+
+  const res = await axios.post(
+    server,
+    {python, java,  'from_lang': language}
+  )
 
   return res.data
 }
@@ -34,16 +43,15 @@ $(document).ready(function(){
   })
 
   // Translation
-  $('#python-container button.translate').click(async() => {
-    code = $('#python-container textarea').val()
+  $('#python-container a.translate').click(async() => {
+    code = pythonEditor.getValue()
     translation = await translateCode(code, 'python')
     javaEditor.setValue(translation)
   })
 
-  $('#java-container button.translate').click(async() => {
-    code = $('#java-container textarea').val()
+  $('#java-container a.translate').click(async() => {
+    code = javaEditor.getValue()
     translation = await translateCode(code, 'java')
     pythonEditor.setValue(translation)
   })
-
 });
