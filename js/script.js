@@ -2,7 +2,8 @@ const translateCode = async(query, language) => {
   // event.preventDefault()
   // setIsLoading(true)
 
-  const server = 'https://b2qob0bw5m.execute-api.us-west-1.amazonaws.com/dev/pointzero/'
+  //const server = 'https://b2qob0bw5m.execute-api.us-west-1.amazonaws.com/dev/pointzero/'
+  const server = 'http://ab9d5dcee8ec743d1894267384b85b46-a90b02e305568472.elb.us-west-1.amazonaws.com/pointzero'
   //const server = 'http://127.0.0.1:8000'
   console.log('Making PointZero API request')
 
