@@ -14,6 +14,8 @@ const translateCode = async(query, language) => {
     {python, java,  'from_lang': language}
   )
 
+  res.data = res.data.replace(/\n *<\/DOCUMENT>$/, '')
+
   return res.data
 }
 
