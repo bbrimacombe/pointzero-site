@@ -9,27 +9,29 @@ const setIsLoading = (bool) => {
 }
 
 const translateCode = async(query, language) => {
-  // event.preventDefault()
   setIsLoading(true)
-  await new Promise(resolve => setTimeout(resolve, 3000));
+
+  try {
+    const server = 'https://4ll33gak2g.execute-api.us-west-1.amazonaws.com/dev/pointzero'
+    console.log('Making PointZero API request')
+
+    java = language == 'java' ? query : ''
+    python = language == 'python' ? query : ''
+
+    const res = await axios.post(
+      server,
+      {python, java,  'from_lang': language}
+    )
+
+    res = res.data.replace(/\n *<\/DOCUMENT>$/, '')
+  } catch (e) {
+    console.log(e)
+    await new Promise(resolve => setTimeout(resolve, 3000));
+    res = language == "python" ? "System.out.print('Hello world!')" : "print('Hello world!')";
+  }
+
   setIsLoading(false)
-  return language == "python" ? "System.out.print('Hello world!')" : "print('Hello world!')";
-
-  // const server = 'https://4ll33gak2g.execute-api.us-west-1.amazonaws.com/dev/pointzero'
-  //const server = 'http://127.0.0.1:8000'
-  console.log('Making PointZero API request')
-
-  java = language == 'java' ? query : ''
-  python = language == 'python' ? query : ''
-
-  const res = await axios.post(
-    server,
-    {python, java,  'from_lang': language}
-  )
-
-  res.data = res.data.replace(/\n *<\/DOCUMENT>$/, '')
-
-  return res.data
+  return res
 }
 
 $(document).ready(function(){
