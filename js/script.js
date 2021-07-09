@@ -55,20 +55,20 @@ $(document).ready(function(){
   })
 
   // Translation
-  $('a.translate#python').click(async() => {
+  $('a.translate.python').click(async() => {
     javaEditor.setValue('')
     code = pythonEditor.getValue()
     translation = await translateCode(code, 'python')
     javaEditor.setValue(translation)
   })
 
-  $('a.translate#java').click(async() => {
+  $('a.translate.java').click(async() => {
     pythonEditor.setValue('')
     code = javaEditor.getValue()
     translation = await translateCode(code, 'java')
     pythonEditor.setValue(translation)
   })
 
-  $('#python-container a.clear').click(() => pythonEditor.setValue(''))
-  $('#java-container a.clear').click(() => javaEditor.setValue(''))
+  $('a.clear.python').click(() => pythonEditor.setValue(''))
+  $('a.clear.java').click(() => javaEditor.setValue(''))
 });
