@@ -1,8 +1,21 @@
+const setIsLoading = (bool) => {
+  if (bool) {
+    $('#swap-icon').hide();
+    $('#loading-icon').show();
+  } else {
+    $('#loading-icon').hide();
+    $('#swap-icon').show();
+  }
+}
+
 const translateCode = async(query, language) => {
   // event.preventDefault()
-  // setIsLoading(true)
+  setIsLoading(true)
+  await new Promise(resolve => setTimeout(resolve, 3000));
+  setIsLoading(false)
+  return language == "python" ? "System.out.print('Hello world!')" : "print('Hello world!')";
 
-  const server = 'https://4ll33gak2g.execute-api.us-west-1.amazonaws.com/dev/pointzero'
+  // const server = 'https://4ll33gak2g.execute-api.us-west-1.amazonaws.com/dev/pointzero'
   //const server = 'http://127.0.0.1:8000'
   console.log('Making PointZero API request')
 
@@ -42,15 +55,20 @@ $(document).ready(function(){
   })
 
   // Translation
-  $('#python-container a.translate').click(async() => {
+  $('a.translate#python').click(async() => {
+    javaEditor.setValue('')
     code = pythonEditor.getValue()
     translation = await translateCode(code, 'python')
     javaEditor.setValue(translation)
   })
 
-  $('#java-container a.translate').click(async() => {
+  $('a.translate#java').click(async() => {
+    pythonEditor.setValue('')
     code = javaEditor.getValue()
     translation = await translateCode(code, 'java')
     pythonEditor.setValue(translation)
   })
+
+  $('#python-container a.clear').click(() => pythonEditor.setValue(''))
+  $('#java-container a.clear').click(() => javaEditor.setValue(''))
 });

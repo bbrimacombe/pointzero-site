@@ -5,7 +5,8 @@
   grid-template-rows: auto;
   grid-template-areas:
     "header header"
-    "column-left column-right";
+    "column-left column-right"
+    "buttons-row buttons-row";
 }
 
 .header {
@@ -23,9 +24,10 @@
 }
 
 .buttons-row {
+  grid-area: buttons-row;
   margin-top: 2em;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 body {
@@ -53,4 +55,29 @@ div.buttons-row a:hover {
 div.buttons-row a:active {
   position:relative;
   top:1px;
+}
+
+.buttons-row a.language {
+  width: 5em;
+  text-align: center;
+  padding: 11px 11px;
+}
+
+.buttons-row a.translate {
+  margin: 0px 20px;
+}
+
+#swap-icon {
+  filter: invert(100%);
+}
+
+.buttons-group img {
+  height: 40px;
+  width: 40px;
+  vertical-align: middle;
+}
+
+.CodeMirror {
+  height: 47em;
+  border: 1px solid #777;
 }
