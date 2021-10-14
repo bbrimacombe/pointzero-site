@@ -1,5 +1,5 @@
 .u-section-1 {
-  background-image: linear-gradient(0deg, rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url("img/singularity_red.jpg");
+  background-image: linear-gradient(0deg, rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url("images/singularity_red.jpg");
   background-position: 50% 50%;
 }
 
@@ -397,7 +397,7 @@
   }
 }.u-section-7 {
   margin-top: 0;
-  background-image: linear-gradient(0deg, rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url("img/singularity_red.jpg");
+  background-image: linear-gradient(0deg, rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url("images/singularity_red.jpg");
   background-position: 50% 50%;
 }
 
