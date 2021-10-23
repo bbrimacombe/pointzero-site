@@ -1,5 +1,5 @@
 .u-section-1 {
-  background-image: linear-gradient(0deg, rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url("img/singularity_red.jpg");
+  background-image: linear-gradient(0deg, rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url("images/singularity_red.jpg");
   background-position: 50% 50%;
 }
 
@@ -46,14 +46,14 @@
 }
 
 .u-section-2 .u-sheet-1 {
-  min-height: 500px;
+  min-height: 459px;
 }
 
 .u-section-2 .u-text-1 {
   font-size: 3rem;
   font-weight: 700;
   font-family: "Fugaz One";
-  margin: 200px 371px 0 -34px;
+  margin: 230px 371px 0 -34px;
 }
 
 .u-section-2 .u-text-2 {
@@ -65,12 +65,12 @@
   font-size: 0.875rem;
   font-weight: 700;
   width: 474px;
-  margin: 16px auto 60px;
+  margin: 16px auto;
 }
 
 @media (max-width: 1199px) {
   .u-section-2 .u-sheet-1 {
-    min-height: 505px;
+    min-height: 423px;
   }
 
   .u-section-2 .u-text-1 {
@@ -79,11 +79,13 @@
   }
 
   .u-section-2 .u-text-2 {
-    margin-right: 0;
+    width: auto;
+    margin-right: -19px;
   }
 
   .u-section-2 .u-text-3 {
     width: 363px;
+    margin-bottom: 0;
   }
 }
 
@@ -92,27 +94,34 @@
     margin-right: 0;
     margin-left: 0;
   }
+
+  .u-section-2 .u-text-2 {
+    margin-right: 0;
+  }
 }
 
 @media (max-width: 575px) {
   .u-section-2 .u-sheet-1 {
-    min-height: 660px;
+    min-height: 568px;
   }
 
   .u-section-2 .u-text-1 {
     font-size: 1.5rem;
+    margin-top: 180px;
   }
 
   .u-section-2 .u-text-3 {
-    width: 340px;
-    margin-bottom: 50px;
+    width: auto;
+    margin-bottom: 16px;
+    margin-left: -14px;
+    margin-right: -14px;
   }
 }.u-section-3 {
   background-image: none;
 }
 
 .u-section-3 .u-sheet-1 {
-  min-height: 501px;
+  min-height: 407px;
 }
 
 .u-section-3 .u-text-1 {
@@ -130,12 +139,17 @@
 .u-section-3 .u-text-3 {
   font-size: 0.875rem;
   width: 788px;
-  margin: 16px auto 60px;
+  margin: 16px auto;
 }
 
 @media (max-width: 1199px) {
+  .u-section-3 .u-sheet-1 {
+    min-height: 471px;
+  }
+
   .u-section-3 .u-text-1 {
     width: auto;
+    margin-top: 190px;
     margin-right: 271px;
     margin-left: -34px;
   }
@@ -145,7 +159,7 @@
   }
 
   .u-section-3 .u-text-3 {
-    width: 363px;
+    width: 440px;
   }
 }
 
@@ -164,7 +178,7 @@
 
 @media (max-width: 575px) {
   .u-section-3 .u-sheet-1 {
-    min-height: 584px;
+    min-height: 540px;
   }
 
   .u-section-3 .u-text-1 {
@@ -181,7 +195,7 @@
 }
 
 .u-section-4 .u-sheet-1 {
-  min-height: 499px;
+  min-height: 404px;
 }
 
 .u-section-4 .u-text-1 {
@@ -193,18 +207,23 @@
 
 .u-section-4 .u-text-2 {
   font-size: 0.875rem;
-  margin: 16px 0 0;
+  margin: 15px 0 0;
 }
 
 .u-section-4 .u-text-3 {
   font-size: 0.875rem;
   width: 474px;
-  margin: 16px auto 60px;
+  margin: 15px auto;
 }
 
 @media (max-width: 1199px) {
+  .u-section-4 .u-sheet-1 {
+    min-height: 426px;
+  }
+
   .u-section-4 .u-text-1 {
     width: auto;
+    margin-top: 190px;
     margin-right: 274px;
     margin-left: -37px;
   }
@@ -229,7 +248,7 @@
 
 @media (max-width: 575px) {
   .u-section-4 .u-sheet-1 {
-    min-height: 628px;
+    min-height: 453px;
   }
 
   .u-section-4 .u-text-1 {
@@ -272,11 +291,12 @@
 
 @media (max-width: 1199px) {
   .u-section-5 .u-sheet-1 {
-    min-height: 543px;
+    min-height: 513px;
   }
 
   .u-section-5 .u-text-1 {
     width: auto;
+    margin-top: 190px;
   }
 
   .u-section-5 .u-text-2 {
@@ -302,12 +322,16 @@
 
 @media (max-width: 575px) {
   .u-section-5 .u-sheet-1 {
-    min-height: 561px;
+    min-height: 590px;
   }
 
   .u-section-5 .u-text-1 {
     font-size: 1.5rem;
     margin-top: 150px;
+  }
+
+  .u-section-5 .u-btn-1 {
+    margin-top: 55px;
   }
 }.u-section-6 {
   background-image: none;
@@ -321,7 +345,7 @@
   font-size: 6rem;
   font-family: "Fugaz One";
   width: 471px;
-  margin: 101px auto 0;
+  margin: 110px auto 0;
 }
 
 .u-section-6 .u-btn-1 {
@@ -358,13 +382,13 @@
 
 @media (max-width: 575px) {
   .u-section-6 .u-sheet-1 {
-    min-height: 378px;
+    min-height: 400px;
   }
 
   .u-section-6 .u-text-1 {
     font-size: 3.75rem;
     width: auto;
-    margin-top: 81px;
+    margin-top: 100px;
     margin-left: 14px;
     margin-right: 14px;
   }
@@ -378,7 +402,7 @@
   }
 }.u-section-7 {
   margin-top: 0;
-  background-image: linear-gradient(0deg, rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url("img/singularity_red.jpg");
+  background-image: linear-gradient(0deg, rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url("images/singularity_red.jpg");
   background-position: 50% 50%;
 }
 
