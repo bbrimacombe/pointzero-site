@@ -11,58 +11,39 @@
       </div>
       <div class="column-left" id="python-container">
         <div style="width: 100%">
-          <textarea class="codemirror-textarea">
-# Enter some python code to translate
-def main():
-  for i in range(20):
-    if (i % 15):
-      print(i, "fizzbuzz")
-    elif i % 3 == 0:
-      print(i, "fizz")
-    elif i % 5 == 0:
-      print(i, "buzz")
-    else:
-      print(i)</textarea>
+          <textarea id="python-textarea" class="codemirror-textarea">Enter Code Here</textarea>
         </div>
       </div>
       <div class="column-right" id="java-container">
         <div style="width: 100%">
-          <textarea class="codemirror-textarea">
-import java.util.*;
-class FizzBuzz {
-    public static void main(String args[]) {
-        int n = 100;
-
-        for (int i=0; i&lt;20; i++) {
-            if (i%15==0)
-                System.out.print(i + " fizzbuzz");
-            else if (i%3==0)
-                System.out.print(i + " fizz");
-            else if (i%5==0)
-                System.out.print(i + " buzz");
-            else
-                System.out.print(i);
-        }
-    }
-}</textarea>
+          <textarea id="java-textarea" class="codemirror-textarea">Output Code Here</textarea>
         </div>
         <div>
         </div>
       </div>
         <div class="buttons-row">
           <div class="buttons-group">
-            <a class="language">Python ▾</a>
+				<select class="btn" name="fromLang" id="fromLang">
+					<option value="none">Select Language</option>
+					<option value="python">Python</option>
+				</select>
+				<select class="btn" name="samplesList" id="samplesList">
+					<option value="none">No Samples</option>
+				</select>
           </div>
           <div class="buttons-group">
-            <a class="clear python">Clear</a>
-            <a class="translate python">Translate</a>
+			<a class="btn clear python">Clear</a>
+            <a class="btn translate python">Translate</a>
             <img src="img/swap_icon.svg" id="swap-icon"/>
             <img src="img/loading_spinner.svg" id="loading-icon" hidden/>
-            <a class="translate java">Translate</a>
-            <a class="clear java">Clear</a>
+            <a class="btn translate java">Translate</a>
+            <a class="btn clear java">Clear</a>
           </div>
           <div class="buttons-group">
-            <a class="language">Java ▾</a>
+				<select class="btn" name="toLang" id="toLang">
+					<option value="none">Select Language</option>
+					<option value="java">Java</option>
+				</select>
           </div>
         </div>
     </div>
@@ -75,5 +56,7 @@ class FizzBuzz {
     <script type="text/javascript" src="plugin/codemirror/addon/edit/closebrackets.js"></script>
     <script type="text/javascript" src="plugin/codemirror/addon/edit/trailingspace.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
+    <script type="text/javascript" src="js/loadSamples.js"></script>
+	 <script src="https://www.google.com/recaptcha/api.js?render=6LcjOIYeAAAAABun0PgmsGr6CxhyWdpCEOOGJaFm"></script>
   </body>
 </html>
