@@ -1,3 +1,5 @@
+const grecaptchaSiteKey = '6LcjOIYeAAAAABun0PgmsGr6CxhyWdpCEOOGJaFm'
+
 const setIsLoading = (bool) => {
   if (bool) {
     $('#swap-icon').hide();
@@ -61,20 +63,44 @@ $(document).ready(function(){
   $('#java-textarea').data('javaEditor', javaEditor);
 
   // Translation
-  $('a.translate.python').click(async() => {
-    javaEditor.setValue('')
-    code = pythonEditor.getValue()
-    translation = await translateCode(code, 'python')
-    javaEditor.setValue(translation)
+  $('a.translate.python').click((e) => {
+    e.preventDefault();
+    grecaptcha.ready(function() {
+      grecaptcha.execute(grecaptchaSiteKey, {action: 'submit'}).then(async function(token) {
+        javaEditor.setValue('')
+        code = pythonEditor.getValue()
+        translation = await translateCode(code, 'python')
+        javaEditor.setValue(translation)
+      });
+    });
   })
 
-  $('a.translate.java').click(async() => {
-    pythonEditor.setValue('')
-    code = javaEditor.getValue()
-    translation = await translateCode(code, 'java')
-    pythonEditor.setValue(translation)
+  $('a.translate.java').click((e) => {
+    e.preventDefault();
+    grecaptcha.ready(function() {
+      grecaptcha.execute(grecaptchaSiteKey, {action: 'submit'}).then(async function(token) {
+        pythonEditor.setValue('')
+        code = javaEditor.getValue()
+        translation = await translateCode(code, 'java')
+        pythonEditor.setValue(translation)
+      });
+    });
   })
 
-  $('a.clear.python').click(() => pythonEditor.setValue(''))
-  $('a.clear.java').click(() => javaEditor.setValue(''))
+  $('a.clear.python').click((e) => {
+    e.preventDefault();
+    grecaptcha.ready(function() {
+      grecaptcha.execute(grecaptchaSiteKey, {action: 'submit'}).then(function(token) {
+        pythonEditor.setValue('')
+      });
+    });
+  })
+  $('a.clear.java').click((e) => {
+    e.preventDefault();
+    grecaptcha.ready(function() {
+      grecaptcha.execute(grecaptchaSiteKey, {action: 'submit'}).then(function(token) {
+        javaEditor.setValue('')
+      });
+    });
+  })
 });
