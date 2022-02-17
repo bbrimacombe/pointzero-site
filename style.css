@@ -36,7 +36,7 @@ body {
   font-family: arial;
 }
 
-div.buttons-row a {
+div.buttons-row .btn {
   background: #1C1C1C;
   background-color: #1C1C1C;
   border-radius:5px;
@@ -48,11 +48,11 @@ div.buttons-row a {
   text-decoration: none;
 }
 
-div.buttons-row a:hover {
+div.buttons-row .btn:hover {
   background-color: #2C2C2C;
 }
 
-div.buttons-row a:active {
+div.buttons-row .btn:active {
   position:relative;
   top:1px;
 }
