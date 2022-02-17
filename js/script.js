@@ -56,6 +56,10 @@ $(document).ready(function(){
     mode: "text/x-java",
   })
 
+  //Save instances
+  $('#python-textarea').data('pythonEditor', pythonEditor);
+  $('#java-textarea').data('javaEditor', javaEditor);
+
   // Translation
   $('a.translate.python').click(async() => {
     javaEditor.setValue('')
