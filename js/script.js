@@ -47,7 +47,10 @@ const translateCode = async(rightSide, leftSide, fromLang, toLang) => {
 		// res = { error: e, rightSide, leftSide, fromLang, toLang }
 		// ^ This line can be uncommented to test that parameters are valid
 		const findLeft = sampleData.filter((sample) => sample.fromLang === fromLang).map((sample) => {
-			const relevance = rankTextRelevance(leftSide, sample.fromCode)
+			let relevance = rankTextRelevance(leftSide, sample.fromCode)
+			if (sample.fromCode.trim() === leftSide.trim()) {
+				relevance = 99999
+			}
 			return { ...sample, relevance }
 		})
 		if (findLeft.length) {
