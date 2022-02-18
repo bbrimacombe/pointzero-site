@@ -149,4 +149,23 @@ ${translation.rightSide}`
 			});
 		});
   	})
+
+	$('#mc-embedded-subscribe-form').submit((e) => {
+		e.preventDefault();
+		grecaptcha.ready(function() {
+			grecaptcha.execute(grecaptchaSiteKey, {action: 'submit'}).then(async function(token) {
+				try {
+					const res = await axios({
+						method: 'POST',
+						url: document.querySelector('#mc-embedded-subscribe-form').getAttribute('action'),
+						data: { EMAIL: document.querySelector('#mce-EMAIL').value },
+						headers: { 'Content-Type': 'application/json' },
+					})
+					console.log(res)
+				} catch (e) {
+					console.error(e)
+				}
+			});
+		});
+	})
 });
