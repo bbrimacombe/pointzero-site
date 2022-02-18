@@ -1,48 +1,51 @@
 const sampleData = [
     { name: "Fizzbuzz", fromLang: "python", 
-        fromCode: `# Enter some python code to translate
-        def main():
-        for i in range(20):
-            if (i % 15):
-            print(i, "fizzbuzz")
-            elif i % 3 == 0:
-            print(i, "fizz")
-            elif i % 5 == 0:
-            print(i, "buzz")
-            else:
-            print(i)`,
+        fromCode: 
+`# Enter some python code to translate
+def main():
+for i in range(20):
+    if (i % 15):
+    print(i, "fizzbuzz")
+    elif i % 3 == 0:
+    print(i, "fizz")
+    elif i % 5 == 0:
+    print(i, "buzz")
+    else:
+    print(i)`,
     },
     { name: "Fizzbuzz 2", fromLang: "python", 
-        fromCode: `# Enter some python code to translate
-        def main():
-        for i in range(20):
-            if (i % 15):
-            print(i, "fizzbuzz 2")
-            elif i % 3 == 0:
-            print(i, "fizz 2")
-            elif i % 5 == 0:
-            print(i, "buzz 2")
-            else:
-            print(i)`,
+        fromCode: 
+`# Enter some python code to translate
+def main():
+for i in range(20):
+    if (i % 15):
+    print(i, "fizzbuzz 2")
+    elif i % 3 == 0:
+    print(i, "fizz 2")
+    elif i % 5 == 0:
+    print(i, "buzz 2")
+    else:
+    print(i)`,
     },
     { name: "Fizzbuzz 3", fromLang: "java", 
-        fromCode: `import java.util.*;
-        class FizzBuzz {
-            public static void main(String args[]) {
-                int n = 100;
-        
-                for (int i=0; i&lt;20; i++) {
-                    if (i%15==0)
-                        System.out.print(i + " fizzbuzz 3");
-                    else if (i%3==0)
-                        System.out.print(i + " fizz 3");
-                    else if (i%5==0)
-                        System.out.print(i + " buzz 3");
-                    else
-                        System.out.print(i);
-                }
-            }
-        }`,
+        fromCode: 
+`import java.util.*;
+class FizzBuzz {
+    public static void main(String args[]) {
+        int n = 100;
+
+        for (int i=0; i&lt;20; i++) {
+            if (i%15==0)
+                System.out.print(i + " fizzbuzz 3");
+            else if (i%3==0)
+                System.out.print(i + " fizz 3");
+            else if (i%5==0)
+                System.out.print(i + " buzz 3");
+            else
+                System.out.print(i);
+        }
+    }
+}`,
         }
 ]
 
