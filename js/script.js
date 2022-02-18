@@ -67,7 +67,7 @@ $(document).ready(function(){
   let langList = ""
   if (langs.length) {
       langs.forEach((lang) => {
-          langList += `<option>${lang.displayName}</option>`
+          langList += `<option value=${lang.name}>${lang.displayName}</option>`
       })
       document.querySelector('#fromLang').innerHTML = langList
       document.querySelector('#toLang').innerHTML = langList
@@ -83,7 +83,7 @@ $(document).ready(function(){
       grecaptcha.execute(grecaptchaSiteKey, {action: 'submit'}).then(async function(token) {
         code = inputEditor.getValue()
         outputEditor.setValue('')
-        translation = await translateCode(code, document.querySelector('#fromLang').value.toLowerCase())
+        translation = await translateCode(code, document.querySelector('#fromLang').value)
         outputEditor.setValue(translation)
       });
     });

@@ -62,12 +62,12 @@ const updateSample = (sampleName) => {
 const langSampleChange = (fromLang, toLang) => {
     const inputEditor = $('#inputText').data('inputEditor')
     const outputEditor = $('#outputText').data('outputEditor')
-    inputEditor.setOption('mode', langs.filter((lang) => lang.name === fromLang.toLowerCase())[0].mode)
-    outputEditor.setOption('mode', langs.filter((lang) => lang.name === toLang.toLowerCase())[0].mode)
+    inputEditor.setOption('mode', langs.filter((lang) => lang.name === fromLang)[0].mode)
+    outputEditor.setOption('mode', langs.filter((lang) => lang.name === toLang)[0].mode)
     console.log(fromLang, toLang)
     let sampleNames = []
     sampleData.forEach((sample) => {
-        if (sample.fromLang === fromLang.toLowerCase()) {
+        if (sample.fromLang === fromLang) {
             sampleNames.push(sample.name)
         }
     })
