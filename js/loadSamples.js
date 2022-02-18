@@ -1,93 +1,48 @@
 const sampleData = [
-    { name: "Fizzbuzz", fromLang: "python", toLang: "java", 
+    { name: "Fizzbuzz", fromLang: "python", 
         fromCode: `# Enter some python code to translate
-            def main():
-            for i in range(20):
-                if (i % 15):
-                print(i, "fizzbuzz")
-                elif i % 3 == 0:
-                print(i, "fizz")
-                elif i % 5 == 0:
-                print(i, "buzz")
-                else:
-                print(i)`,
-        toCode: `import java.util.*;
-            class FizzBuzz {
-                public static void main(String args[]) {
-                    int n = 100;
-            
-                    for (int i=0; i&lt;20; i++) {
-                        if (i%15==0)
-                            System.out.print(i + " fizzbuzz");
-                        else if (i%3==0)
-                            System.out.print(i + " fizz");
-                        else if (i%5==0)
-                            System.out.print(i + " buzz");
-                        else
-                            System.out.print(i);
-                    }
-                }
-            }` 
-    },
-    { name: "Fizzbuzz 2", fromLang: "python", toLang: "java", 
-        fromCode: `# Enter some python code to translate
-            def main():
-            for i in range(20):
-                if (i % 15):
-                print(i, "fizzbuzz 2")
-                elif i % 3 == 0:
-                print(i, "fizz 2")
-                elif i % 5 == 0:
-                print(i, "buzz 2")
-                else:
-                print(i)`,
-        toCode: `import java.util.*;
-            class FizzBuzz {
-                public static void main(String args[]) {
-                    int n = 100;
-            
-                    for (int i=0; i&lt;20; i++) {
-                        if (i%15==0)
-                            System.out.print(i + " fizzbuzz 2");
-                        else if (i%3==0)
-                            System.out.print(i + " fizz 2");
-                        else if (i%5==0)
-                            System.out.print(i + " buzz 2");
-                        else
-                            System.out.print(i);
-                    }
-                }
-            }` 
-    },
-    { name: "Fizzbuzz 3", fromLang: "java", toLang: "python", 
-        fromCode: `import java.util.*;
-            class FizzBuzz {
-                public static void main(String args[]) {
-                    int n = 100;
-            
-                    for (int i=0; i&lt;20; i++) {
-                        if (i%15==0)
-                            System.out.print(i + " fizzbuzz 3");
-                        else if (i%3==0)
-                            System.out.print(i + " fizz 3");
-                        else if (i%5==0)
-                            System.out.print(i + " buzz 3");
-                        else
-                            System.out.print(i);
-                    }
-                }
-            }`,
-        toCode: `# Enter some python code to translate
         def main():
         for i in range(20):
             if (i % 15):
-            print(i, "fizzbuzz 3")
+            print(i, "fizzbuzz")
             elif i % 3 == 0:
-            print(i, "fizz 3")
+            print(i, "fizz")
             elif i % 5 == 0:
-            print(i, "buzz 3")
+            print(i, "buzz")
             else:
-            print(i)`
+            print(i)`,
+    },
+    { name: "Fizzbuzz 2", fromLang: "python", 
+        fromCode: `# Enter some python code to translate
+        def main():
+        for i in range(20):
+            if (i % 15):
+            print(i, "fizzbuzz 2")
+            elif i % 3 == 0:
+            print(i, "fizz 2")
+            elif i % 5 == 0:
+            print(i, "buzz 2")
+            else:
+            print(i)`,
+    },
+    { name: "Fizzbuzz 3", fromLang: "java", 
+        fromCode: `import java.util.*;
+        class FizzBuzz {
+            public static void main(String args[]) {
+                int n = 100;
+        
+                for (int i=0; i&lt;20; i++) {
+                    if (i%15==0)
+                        System.out.print(i + " fizzbuzz 3");
+                    else if (i%3==0)
+                        System.out.print(i + " fizz 3");
+                    else if (i%5==0)
+                        System.out.print(i + " buzz 3");
+                    else
+                        System.out.print(i);
+                }
+            }
+        }`,
         }
 ]
 
@@ -100,9 +55,8 @@ const updateSample = (sampleName) => {
         return false
     }
     const fromCode = sampleData.filter((sample) => sample.name === sampleName)[0].fromCode
-    const toCode = sampleData.filter((sample) => sample.name === sampleName)[0].toCode
     inputEditor.setValue(fromCode)
-    outputEditor.setValue(toCode)
+    outputEditor.setValue('Waiting...')
 }
 
 const langSampleChange = (fromLang, toLang) => {
@@ -113,7 +67,7 @@ const langSampleChange = (fromLang, toLang) => {
     console.log(fromLang, toLang)
     let sampleNames = []
     sampleData.forEach((sample) => {
-        if (sample.fromLang === fromLang.toLowerCase() && sample.toLang === toLang.toLowerCase()) {
+        if (sample.fromLang === fromLang.toLowerCase()) {
             sampleNames.push(sample.name)
         }
     })
