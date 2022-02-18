@@ -24,14 +24,14 @@
 			<div class="header">
 				<h1>pointzero</h1>
 			</div>
-			<div class="column-left" id="python-container">
+			<div class="column-left" id="inputContainer">
 				<div style="width: 100%">
-				<textarea id="python-textarea" class="codemirror-textarea">Enter Code Here</textarea>
+				<textarea id="inputText" class="codemirror-textarea">Enter Code Here</textarea>
 				</div>
 			</div>
-			<div class="column-right" id="java-container">
+			<div class="column-right" id="outputContainer">
 				<div style="width: 100%">
-				<textarea id="java-textarea" class="codemirror-textarea">Output Code Here</textarea>
+				<textarea id="outputText" class="codemirror-textarea">Output Code Here</textarea>
 				</div>
 				<div>
 				</div>
@@ -40,24 +40,17 @@
 				<div class="buttons-group">
 					<select class="btn" name="fromLang" id="fromLang">
 						<option value="none">Select Language</option>
-						<option value="python">Python</option>
 					</select>
 					<select class="btn" name="samplesList" id="samplesList">
 						<option value="none">No Samples</option>
 					</select>
-				</div>
-				<div class="buttons-group">
-					<a class="btn clear python">Clear</a>
-					<a class="btn translate python">Translate</a>
-					<img src="img/swap_icon.svg" id="swap-icon"/>
+					<a class="btn" id="clearText">Clear</a>
+					<a class="btn" id="translateText">Translate</a>
 					<img src="img/loading_spinner.svg" id="loading-icon" hidden/>
-					<a class="btn translate java">Translate</a>
-					<a class="btn clear java">Clear</a>
 				</div>
 				<div class="buttons-group">
 					<select class="btn" name="toLang" id="toLang">
 						<option value="none">Select Language</option>
-						<option value="java">Java</option>
 					</select>
 				</div>
 			</div>

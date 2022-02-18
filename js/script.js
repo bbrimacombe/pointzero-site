@@ -1,12 +1,15 @@
 const grecaptchaSiteKey = '6LcMNoUeAAAAAKCDfuNh0u9r1ZqgpjyZ0s2cTTn2'
 
+const langs = [
+  { name: 'java', displayName: 'Java', mode: 'text/x-java'},
+  { name: 'python', displayName: 'Python', mode: 'python'}
+]
+
 const setIsLoading = (bool) => {
   if (bool) {
-    $('#swap-icon').hide();
     $('#loading-icon').show();
   } else {
     $('#loading-icon').hide();
-    $('#swap-icon').show();
   }
 }
 
@@ -17,12 +20,9 @@ const translateCode = async(query, language) => {
     const server = 'https://4ll33gak2g.execute-api.us-west-1.amazonaws.com/dev/pointzero'
     console.log('Making PointZero API request')
 
-    java = language == 'java' ? query : ''
-    python = language == 'python' ? query : ''
-
     const res = await axios.post(
       server,
-      {python, java,  'from_lang': language}
+      {query,  'from_lang': language}
     )
 
     res = res.data.replace(/\n *<\/DOCUMENT>$/, '')
@@ -46,60 +46,54 @@ $(document).ready(function(){
     theme: 'yonce',
   }
 
-  const pythonEditorEle = $("#python-container textarea")[0]
-  const pythonEditor = CodeMirror.fromTextArea(pythonEditorEle, {
+  const inputEditorElement = $("#inputContainer textarea")[0]
+  const inputEditor = CodeMirror.fromTextArea(inputEditorElement, {
     ...codeMirrorConfig,
-    mode: "python",
+    mode: 'text'
   })
 
-  const javaEditorEle = $("#java-container textarea")[0]
-  const javaEditor = CodeMirror.fromTextArea(javaEditorEle, {
+  const outputEditorElement = $("#outputContainer textarea")[0]
+  const outputEditor = CodeMirror.fromTextArea(outputEditorElement, {
     ...codeMirrorConfig,
-    mode: "text/x-java",
+    mode: 'text'
   })
 
   //Save instances
-  $('#python-textarea').data('pythonEditor', pythonEditor);
-  $('#java-textarea').data('javaEditor', javaEditor);
+  $('#inputText').data('inputEditor', inputEditor);
+  $('#outputText').data('outputEditor', outputEditor);
+
+  //Add languages
+  let langList = ""
+  if (langs.length) {
+      langs.forEach((lang) => {
+          langList += `<option>${lang.displayName}</option>`
+      })
+      document.querySelector('#fromLang').innerHTML = langList
+      document.querySelector('#toLang').innerHTML = langList
+  } else {
+    document.querySelector('#fromLang').innerHTML = `<option value="none">No Languages</option>`
+    document.querySelector('#toLang').innerHTML = `<option value="none">No Languages</option>`
+  }
 
   // Translation
-  $('a.translate.python').click((e) => {
+  $('#translateText').click((e) => {
     e.preventDefault();
     grecaptcha.ready(function() {
       grecaptcha.execute(grecaptchaSiteKey, {action: 'submit'}).then(async function(token) {
-        javaEditor.setValue('')
-        code = pythonEditor.getValue()
-        translation = await translateCode(code, 'python')
-        javaEditor.setValue(translation)
+        code = inputEditor.getValue()
+        outputEditor.setValue('')
+        translation = await translateCode(code, document.querySelector('#fromLang').value.toLowerCase())
+        outputEditor.setValue(translation)
       });
     });
   })
 
-  $('a.translate.java').click((e) => {
-    e.preventDefault();
-    grecaptcha.ready(function() {
-      grecaptcha.execute(grecaptchaSiteKey, {action: 'submit'}).then(async function(token) {
-        pythonEditor.setValue('')
-        code = javaEditor.getValue()
-        translation = await translateCode(code, 'java')
-        pythonEditor.setValue(translation)
-      });
-    });
-  })
-
-  $('a.clear.python').click((e) => {
+  $('#clearText').click((e) => {
     e.preventDefault();
     grecaptcha.ready(function() {
       grecaptcha.execute(grecaptchaSiteKey, {action: 'submit'}).then(function(token) {
-        pythonEditor.setValue('')
-      });
-    });
-  })
-  $('a.clear.java').click((e) => {
-    e.preventDefault();
-    grecaptcha.ready(function() {
-      grecaptcha.execute(grecaptchaSiteKey, {action: 'submit'}).then(function(token) {
-        javaEditor.setValue('')
+        inputEditor.setValue('')
+        outputEditor.setValue('')
       });
     });
   })

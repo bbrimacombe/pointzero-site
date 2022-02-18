@@ -59,19 +59,8 @@ const sampleData = [
                 }
             }` 
     },
-    { name: "Fizzbuzz 3", fromLang: "python", toLang: "java", 
-        fromCode: `# Enter some python code to translate
-            def main():
-            for i in range(20):
-                if (i % 15):
-                print(i, "fizzbuzz 3")
-                elif i % 3 == 0:
-                print(i, "fizz 3")
-                elif i % 5 == 0:
-                print(i, "buzz 3")
-                else:
-                print(i)`,
-        toCode: `import java.util.*;
+    { name: "Fizzbuzz 3", fromLang: "java", toLang: "python", 
+        fromCode: `import java.util.*;
             class FizzBuzz {
                 public static void main(String args[]) {
                     int n = 100;
@@ -87,29 +76,44 @@ const sampleData = [
                             System.out.print(i);
                     }
                 }
-            }`
+            }`,
+        toCode: `# Enter some python code to translate
+        def main():
+        for i in range(20):
+            if (i % 15):
+            print(i, "fizzbuzz 3")
+            elif i % 3 == 0:
+            print(i, "fizz 3")
+            elif i % 5 == 0:
+            print(i, "buzz 3")
+            else:
+            print(i)`
         }
 ]
 
 const updateSample = (sampleName) => {
-    const pythonEditor = $('#python-textarea').data('pythonEditor')
-    const javaEditor = $('#java-textarea').data('javaEditor')
+    const inputEditor = $('#inputText').data('inputEditor')
+    const outputEditor = $('#outputText').data('outputEditor')
     if (sampleName === 'none') {
-        pythonEditor.setValue('-- No Code --')
-        javaEditor.setValue('-- No Code --')
+        inputEditor.setValue('-- No Code --')
+        outputEditor.setValue('-- No Code --')
         return false
     }
     const fromCode = sampleData.filter((sample) => sample.name === sampleName)[0].fromCode
     const toCode = sampleData.filter((sample) => sample.name === sampleName)[0].toCode
-    pythonEditor.setValue(fromCode)
-    javaEditor.setValue(toCode)
+    const fromLang = sampleData.filter((sample) => sample.name === sampleName)[0].fromLang
+    const toLang = sampleData.filter((sample) => sample.name === sampleName)[0].toLang
+    inputEditor.setOption('mode', langs.filter((lang) => lang.name === fromLang.toLocaleLowerCase())[0].mode)
+    outputEditor.setOption('mode', langs.filter((lang) => lang.name === toLang.toLocaleLowerCase())[0].mode)
+    inputEditor.setValue(fromCode)
+    outputEditor.setValue(toCode)
 }
 
 const langSampleChange = (fromLang, toLang) => {
     console.log(fromLang, toLang)
     let sampleNames = []
     sampleData.forEach((sample) => {
-        if (sample.fromLang === fromLang && sample.toLang === toLang) {
+        if (sample.fromLang === fromLang.toLowerCase() && sample.toLang === toLang.toLowerCase()) {
             sampleNames.push(sample.name)
         }
     })
