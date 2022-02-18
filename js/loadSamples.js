@@ -1,5 +1,7 @@
 const sampleData = [
-    { name: "Fizzbuzz", fromLang: "python", 
+    { commonId: 1, name: "hello_world_python", displayName: "Hello World", fromLang: "python", fromCode: 'print("Hello, World!")' },
+    { commonId: 1, name: "hello_world_java", displayName: "Hello World", fromLang: "java", fromCode: 'System.out.println("Hello, World!");' },
+    { commonId: 2, name: "fizzbuzz_python", displayName: "Fizzbuzz", fromLang: "python", 
         fromCode: 
 `# Enter some python code to translate
 def main():
@@ -13,21 +15,7 @@ for i in range(20):
     else:
     print(i)`,
     },
-    { name: "Fizzbuzz 2", fromLang: "python", 
-        fromCode: 
-`# Enter some python code to translate
-def main():
-for i in range(20):
-    if (i % 15):
-    print(i, "fizzbuzz 2")
-    elif i % 3 == 0:
-    print(i, "fizz 2")
-    elif i % 5 == 0:
-    print(i, "buzz 2")
-    else:
-    print(i)`,
-    },
-    { name: "Fizzbuzz 3", fromLang: "java", 
+    { commonId: 2, name: "fizzbuzz_java", displayName: "Fizzbuzz", fromLang: "java", 
         fromCode: 
 `import java.util.*;
 class FizzBuzz {
@@ -36,17 +24,17 @@ class FizzBuzz {
 
         for (int i=0; i&lt;20; i++) {
             if (i%15==0)
-                System.out.print(i + " fizzbuzz 3");
+                System.out.print(i + " fizzbuzz");
             else if (i%3==0)
-                System.out.print(i + " fizz 3");
+                System.out.print(i + " fizz");
             else if (i%5==0)
-                System.out.print(i + " buzz 3");
+                System.out.print(i + " buzz");
             else
                 System.out.print(i);
         }
     }
 }`,
-        }
+    },
 ]
 
 const updateSample = (sampleName) => {
@@ -57,6 +45,7 @@ const updateSample = (sampleName) => {
         outputEditor.setValue('-- No Code --')
         return false
     }
+    console.log(sampleName)
     const fromCode = sampleData.filter((sample) => sample.name === sampleName)[0].fromCode
     inputEditor.setValue(fromCode)
     outputEditor.setValue('Waiting...')
@@ -71,16 +60,18 @@ const langSampleChange = (fromLang, toLang) => {
     let sampleNames = []
     sampleData.forEach((sample) => {
         if (sample.fromLang === fromLang) {
-            sampleNames.push(sample.name)
+            const displayName = sample.displayName
+            const name = sample.name
+            sampleNames.push({displayName, name})
         }
     })
     let newSampleList = ""
     if (sampleNames.length) {
         sampleNames.forEach((sample) => {
-            newSampleList += `<option>${sample}</option>`
+            newSampleList += `<option value=${sample.name}>${sample.displayName}</option>`
         })
         document.querySelector('#samplesList').innerHTML = newSampleList
-        updateSample(sampleNames[0])
+        updateSample(sampleNames[0].name)
     } else {
         document.querySelector('#samplesList').innerHTML = `<option value="none">No Samples</option>`
         updateSample('none')
