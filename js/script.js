@@ -1,4 +1,4 @@
-const grecaptchaSiteKey = '6LcjOIYeAAAAABun0PgmsGr6CxhyWdpCEOOGJaFm'
+const grecaptchaSiteKey = '6LcMNoUeAAAAAKCDfuNh0u9r1ZqgpjyZ0s2cTTn2'
 
 const setIsLoading = (bool) => {
   if (bool) {
