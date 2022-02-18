@@ -1,101 +1,104 @@
 <html>
-  <head>
-    <link rel="stylesheet" type="text/css" href="plugin/codemirror/lib/codemirror.css">
-    <link rel="stylesheet" type="text/css" href="plugin/codemirror/theme/yonce.css">
-    <link rel="stylesheet" href="style.css">
-	<link href="//cdn-images.mailchimp.com/embedcode/slim-10_7_dtp.css" rel="stylesheet" type="text/css">
-	<style type="text/css">
-	#mc_embed_signup{background: rgb(48, 48, 48); padding:15px; border: 1px solid black; clear:left; font:14px Helvetica,Arial,sans-serif; color: #fff; }
-	/* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.
-	We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
-	</style>
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=<_GOOGLE_ANALYTICS_GTAG_HERE>"></script>
-	<script>
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
+  	<head>
+		<link rel="stylesheet" type="text/css" href="plugin/codemirror/lib/codemirror.css">
+		<link rel="stylesheet" type="text/css" href="plugin/codemirror/theme/yonce.css">
+		<link rel="stylesheet" href="style.css">
+		<link href="//cdn-images.mailchimp.com/embedcode/slim-10_7_dtp.css" rel="stylesheet" type="text/css">
+		<style type="text/css">
+		#mc_embed_signup{background: rgb(48, 48, 48); padding:15px; border: 1px solid black; clear:left; font:14px Helvetica,Arial,sans-serif; color: #fff; }
+		/* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.
+		We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+		</style>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=<_GOOGLE_ANALYTICS_GTAG_HERE>"></script>
+		<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
 
-	gtag('config', '<_GOOGLE_ANALYTICS_GTAG_HERE>');
-	</script>
-  </head>
-  <body>
-    <div class="grid-container">
-      <div class="header">
-        <h1>pointzero</h1>
-      </div>
-      <div class="column-left" id="python-container">
-        <div style="width: 100%">
-          <textarea id="python-textarea" class="codemirror-textarea">Enter Code Here</textarea>
-        </div>
-      </div>
-      <div class="column-right" id="java-container">
-        <div style="width: 100%">
-          <textarea id="java-textarea" class="codemirror-textarea">Output Code Here</textarea>
-        </div>
-        <div>
-        </div>
-      </div>
-        <div class="buttons-row">
-          <div class="buttons-group">
-				<select class="btn" name="fromLang" id="fromLang">
-					<option value="none">Select Language</option>
-					<option value="python">Python</option>
-				</select>
-				<select class="btn" name="samplesList" id="samplesList">
-					<option value="none">No Samples</option>
-				</select>
-          </div>
-          <div class="buttons-group">
-			<a class="btn clear python">Clear</a>
-            <a class="btn translate python">Translate</a>
-            <img src="img/swap_icon.svg" id="swap-icon"/>
-            <img src="img/loading_spinner.svg" id="loading-icon" hidden/>
-            <a class="btn translate java">Translate</a>
-            <a class="btn clear java">Clear</a>
-          </div>
-          <div class="buttons-group">
-				<select class="btn" name="toLang" id="toLang">
-					<option value="none">Select Language</option>
-					<option value="java">Java</option>
-				</select>
-          </div>
-        </div>
-        <div style="margin: 25px 0;">
-			<!-- Begin Mailchimp Signup Form -->
-			<div id="mc_embed_signup">
-				<div style="display: inline-flex;"><img width="65px" height="65px" src="img/email-icon.png" style="margin-right: 5px;" /><h1>Stay in the loop!</h1></div>
-				<hr />
-				<h2>Take a moment to subscribe to our newsletter and stay tuned with all the latest & exclusive news and updates from us!</h2>
-				<form action="https://pointzero.us20.list-manage.com/subscribe/post?u=2452b434d3882c8fffcc251ce&amp;id=359c5cf41f" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-				<div id="mc_embed_signup_scroll">
-				<label for="mce-EMAIL">Please enter your e-mail address</label>
-				<input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Email Address" required>
-				<!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-				<div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_2452b434d3882c8fffcc251ce_359c5cf41f" tabindex="-1" value=""></div>
-				<div class="optionalParent">
-				<br />
-				<div class="clear foot">
-				<input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
-				<p>* We will not be sharing your e-mail with anyone.</p>
-				</div>
-				</div>
-				</div>
-				</form>
+		gtag('config', '<_GOOGLE_ANALYTICS_GTAG_HERE>');
+		</script>
+  	</head>
+  	<body>
+		<div class="grid-container">
+			<div class="header">
+				<h1>pointzero</h1>
 			</div>
-			<!--End mc_embed_signup-->
-		</div> 
-    </div>
-    <script type="text/javascript" src="js/jquery.min.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script type="text/javascript" src="plugin/codemirror/lib/codemirror.js"></script>
-    <script type="text/javascript" src="plugin/codemirror/mode/python/python.js"></script>
-    <script type="text/javascript" src="plugin/codemirror/mode/clike/clike.js"></script>
-    <script type="text/javascript" src="plugin/codemirror/addon/edit/matchbrackets.js"></script>
-    <script type="text/javascript" src="plugin/codemirror/addon/edit/closebrackets.js"></script>
-    <script type="text/javascript" src="plugin/codemirror/addon/edit/trailingspace.js"></script>
-    <script type="text/javascript" src="js/script.js"></script>
-    <script type="text/javascript" src="js/loadSamples.js"></script>
-	<script src="https://www.google.com/recaptcha/api.js?render=6LcMNoUeAAAAAKCDfuNh0u9r1ZqgpjyZ0s2cTTn2"></script>
-  </body>
+			<div class="column-left" id="python-container">
+				<div style="width: 100%">
+				<textarea id="python-textarea" class="codemirror-textarea">Enter Code Here</textarea>
+				</div>
+			</div>
+			<div class="column-right" id="java-container">
+				<div style="width: 100%">
+				<textarea id="java-textarea" class="codemirror-textarea">Output Code Here</textarea>
+				</div>
+				<div>
+				</div>
+			</div>
+			<div class="buttons-row">
+				<div class="buttons-group">
+					<select class="btn" name="fromLang" id="fromLang">
+						<option value="none">Select Language</option>
+						<option value="python">Python</option>
+					</select>
+					<select class="btn" name="samplesList" id="samplesList">
+						<option value="none">No Samples</option>
+					</select>
+				</div>
+				<div class="buttons-group">
+					<a class="btn clear python">Clear</a>
+					<a class="btn translate python">Translate</a>
+					<img src="img/swap_icon.svg" id="swap-icon"/>
+					<img src="img/loading_spinner.svg" id="loading-icon" hidden/>
+					<a class="btn translate java">Translate</a>
+					<a class="btn clear java">Clear</a>
+				</div>
+				<div class="buttons-group">
+					<select class="btn" name="toLang" id="toLang">
+						<option value="none">Select Language</option>
+						<option value="java">Java</option>
+					</select>
+				</div>
+			</div>
+			<div style="margin: 25px 0;">
+				<!-- Begin Mailchimp Signup Form -->
+				<div id="mc_embed_signup">
+					<div style="display: inline-flex;">
+						<img width="65px" height="65px" src="img/email-icon.png" style="margin-right: 5px;" />
+						<h1>Stay in the loop!</h1>
+					</div>
+					<hr />
+					<h2>Take a moment to subscribe to our newsletter and stay tuned with all the latest & exclusive news and updates from us!</h2>
+					<form action="https://pointzero.us20.list-manage.com/subscribe/post?u=2452b434d3882c8fffcc251ce&amp;id=359c5cf41f" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+						<div id="mc_embed_signup_scroll">
+							<label for="mce-EMAIL">Please enter your e-mail address</label>
+							<input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Email Address" required>
+							<!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+							<div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_2452b434d3882c8fffcc251ce_359c5cf41f" tabindex="-1" value=""></div>
+								<div class="optionalParent">
+								<br />
+								<div class="clear foot">
+									<input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+									<p>* We will not be sharing your e-mail with anyone.</p>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+				<!--End mc_embed_signup-->
+			</div> 
+		</div>
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<script type="text/javascript" src="plugin/codemirror/lib/codemirror.js"></script>
+		<script type="text/javascript" src="plugin/codemirror/mode/python/python.js"></script>
+		<script type="text/javascript" src="plugin/codemirror/mode/clike/clike.js"></script>
+		<script type="text/javascript" src="plugin/codemirror/addon/edit/matchbrackets.js"></script>
+		<script type="text/javascript" src="plugin/codemirror/addon/edit/closebrackets.js"></script>
+		<script type="text/javascript" src="plugin/codemirror/addon/edit/trailingspace.js"></script>
+		<script type="text/javascript" src="js/script.js"></script>
+		<script type="text/javascript" src="js/loadSamples.js"></script>
+		<script src="https://www.google.com/recaptcha/api.js?render=6LcMNoUeAAAAAKCDfuNh0u9r1ZqgpjyZ0s2cTTn2"></script>
+  	</body>
 </html>
