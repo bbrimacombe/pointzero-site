@@ -3,7 +3,10 @@ const grecaptchaSiteKey = '6LcMNoUeAAAAAKCDfuNh0u9r1ZqgpjyZ0s2cTTn2'
 const langs = [
 	{ name: 'text', displayName: 'Select Language', mode: 'text'},
 	{ name: 'java', displayName: 'Java', mode: 'text/x-java'},
-	{ name: 'python', displayName: 'Python', mode: 'python'}
+	{ name: 'python', displayName: 'Python', mode: 'text/x-python'},
+	{ name: 'c', displayName: 'C', mode: 'text/x-csrc'},
+	{ name: 'cpp', displayName: 'Cpp/C++', mode: 'text/x-c++src'},
+	{ name: 'rust', displayName: 'Rust', mode: 'text/x-rustsrc'},
 ]
 
 const setIsLoading = (bool) => {
@@ -32,7 +35,7 @@ const translateCode = async(rightSide, leftSide, fromLang, toLang) => {
 		await new Promise(resolve => setTimeout(resolve, 3000));
 		// res = { error: e, rightSide, leftSide, fromLang, toLang }
 		// ^ This line can be uncommented to test that parameters are valid
-		const findLeft = sampleData.filter((sample) => sample.fromCode === leftSide && sample.fromLang === fromLang)
+		const findLeft = sampleData.filter((sample) => sample.fromCode.trim() === leftSide.trim() && sample.fromLang === fromLang)
 		if (findLeft.length) {
 			const getLeftCommonId = findLeft[0].commonId
 			const findRightMatch = sampleData.filter((sample) => sample.commonId === getLeftCommonId && sample.fromLang === toLang)
