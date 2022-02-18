@@ -101,15 +101,15 @@ const updateSample = (sampleName) => {
     }
     const fromCode = sampleData.filter((sample) => sample.name === sampleName)[0].fromCode
     const toCode = sampleData.filter((sample) => sample.name === sampleName)[0].toCode
-    const fromLang = sampleData.filter((sample) => sample.name === sampleName)[0].fromLang
-    const toLang = sampleData.filter((sample) => sample.name === sampleName)[0].toLang
-    inputEditor.setOption('mode', langs.filter((lang) => lang.name === fromLang.toLocaleLowerCase())[0].mode)
-    outputEditor.setOption('mode', langs.filter((lang) => lang.name === toLang.toLocaleLowerCase())[0].mode)
     inputEditor.setValue(fromCode)
     outputEditor.setValue(toCode)
 }
 
 const langSampleChange = (fromLang, toLang) => {
+    const inputEditor = $('#inputText').data('inputEditor')
+    const outputEditor = $('#outputText').data('outputEditor')
+    inputEditor.setOption('mode', langs.filter((lang) => lang.name === fromLang.toLowerCase())[0].mode)
+    outputEditor.setOption('mode', langs.filter((lang) => lang.name === toLang.toLowerCase())[0].mode)
     console.log(fromLang, toLang)
     let sampleNames = []
     sampleData.forEach((sample) => {

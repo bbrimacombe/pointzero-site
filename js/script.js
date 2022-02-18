@@ -1,6 +1,7 @@
 const grecaptchaSiteKey = '6LcMNoUeAAAAAKCDfuNh0u9r1ZqgpjyZ0s2cTTn2'
 
 const langs = [
+  { name: 'text', displayName: 'Text', mode: 'text'},
   { name: 'java', displayName: 'Java', mode: 'text/x-java'},
   { name: 'python', displayName: 'Python', mode: 'python'}
 ]
