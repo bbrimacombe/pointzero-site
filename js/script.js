@@ -56,7 +56,7 @@ const translateCode = async(rightSide, leftSide, fromLang, toLang) => {
 		if (findLeft.length) {
 			const sortedFindLeft = findLeft.sort((a, b) => b.relevance - a.relevance)
 			console.log(sortedFindLeft)
-			if (relevance === 0) return res = { error: e, rightSide, leftSide, fromLang, toLang }
+			if (sortedFindLeft[0].relevance === 0) return res = { error: e, rightSide, leftSide, fromLang, toLang }
 			const getLeftCommonId = sortedFindLeft[0].commonId
 			const findRightMatch = sampleData.filter((sample) => sample.commonId === getLeftCommonId && sample.fromLang === toLang)
 			if (findRightMatch.length) {
