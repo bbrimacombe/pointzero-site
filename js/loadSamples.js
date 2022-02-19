@@ -25,40 +25,6 @@ int main() {
     println!("Hello World!");
 }`,
     },
-    { commonId: 2, name: "fizzbuzz_python", displayName: "Fizzbuzz", fromLang: "python", 
-        fromCode: 
-`# Enter some python code to translate
-def main():
-for i in range(20):
-    if (i % 15):
-    print(i, "fizzbuzz")
-    elif i % 3 == 0:
-    print(i, "fizz")
-    elif i % 5 == 0:
-    print(i, "buzz")
-    else:
-    print(i)`,
-    },
-    { commonId: 2, name: "fizzbuzz_java", displayName: "Fizzbuzz", fromLang: "java", 
-        fromCode: 
-`import java.util.*;
-class FizzBuzz {
-    public static void main(String args[]) {
-        int n = 100;
-
-        for (int i=0; i&lt;20; i++) {
-            if (i%15==0)
-                System.out.print(i + " fizzbuzz");
-            else if (i%3==0)
-                System.out.print(i + " fizz");
-            else if (i%5==0)
-                System.out.print(i + " buzz");
-            else
-                System.out.print(i);
-        }
-    }
-}`,
-    },
 ]
 
 const updateSample = (sampleName) => {
@@ -75,12 +41,9 @@ const updateSample = (sampleName) => {
     outputEditor.setValue('Waiting...')
 }
 
-const langSampleChange = (fromLang, toLang) => {
+const langSampleChange = (fromLang) => {
     const inputEditor = $('#inputText').data('inputEditor')
-    const outputEditor = $('#outputText').data('outputEditor')
     inputEditor.setOption('mode', langs.filter((lang) => lang.name === fromLang)[0].mode)
-    outputEditor.setOption('mode', langs.filter((lang) => lang.name === toLang)[0].mode)
-    console.log(fromLang, toLang)
     let sampleNames = []
     sampleData.forEach((sample) => {
         if (sample.fromLang === fromLang) {
@@ -104,14 +67,13 @@ const langSampleChange = (fromLang, toLang) => {
 
 document.querySelector('#fromLang').addEventListener('change', () => {
     const fromLang = document.querySelector('#fromLang').value
-    const toLang = document.querySelector('#toLang').value
-    langSampleChange(fromLang, toLang)
+    langSampleChange(fromLang)
 })
 
 document.querySelector('#toLang').addEventListener('change', () => {
-    const fromLang = document.querySelector('#fromLang').value
     const toLang = document.querySelector('#toLang').value
-    langSampleChange(fromLang, toLang)
+    const outputEditor = $('#outputText').data('outputEditor')
+    outputEditor.setOption('mode', langs.filter((lang) => lang.name === toLang)[0].mode)
 })
 
 document.querySelector('#samplesList').addEventListener('change', () => {
