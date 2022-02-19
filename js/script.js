@@ -73,58 +73,53 @@ const translateCode = async(rightSide, leftSide, fromLang, toLang) => {
 	return res
 }
 
-$(document).ready(function(){
-  	// CodeMirror
-	const codeMirrorConfig = {
-		lineNumbers: true,
-		matchBrackets: true,
-		autoCloseBrackets: true,
-		showTrailingSpace: true,
-		theme: 'yonce',
-	}
+// CodeMirror
+const codeMirrorConfig = {
+	lineNumbers: true,
+	lineWrapping: true,
+	indentUnit: 4,
+	matchBrackets: true,
+	autoCloseBrackets: true,
+	showTrailingSpace: true,
+	theme: 'yonce',
+}
 
-	const inputEditorElement = $("#inputContainer textarea")[0]
-	const inputEditor = CodeMirror.fromTextArea(inputEditorElement, {
-		...codeMirrorConfig,
-		mode: 'text'
+const inputEditor = CodeMirror.fromTextArea(document.querySelector('#inputText'), {
+	...codeMirrorConfig,
+	mode: 'text'
+})
+
+const outputEditor = CodeMirror.fromTextArea(document.querySelector('#outputText'), {
+	...codeMirrorConfig,
+	mode: 'text'
+})
+
+//Add languages
+let langList = ""
+if (langs.length) {
+	langs.forEach((lang) => {
+		langList += `<option value=${lang.name}>${lang.displayName}</option>`
 	})
+	document.querySelector('#fromLang').innerHTML = langList
+	document.querySelector('#toLang').innerHTML = langList
+} else {
+	document.querySelector('#fromLang').innerHTML = `<option value="none">No Languages</option>`
+	document.querySelector('#toLang').innerHTML = `<option value="none">No Languages</option>`
+}
 
-	const outputEditorElement = $("#outputContainer textarea")[0]
-	const outputEditor = CodeMirror.fromTextArea(outputEditorElement, {
-		...codeMirrorConfig,
-		mode: 'text'
-	})
-
-	//Save instances
-	$('#inputText').data('inputEditor', inputEditor);
-	$('#outputText').data('outputEditor', outputEditor);
-
-	//Add languages
-	let langList = ""
-	if (langs.length) {
-		langs.forEach((lang) => {
-			langList += `<option value=${lang.name}>${lang.displayName}</option>`
-		})
-		document.querySelector('#fromLang').innerHTML = langList
-		document.querySelector('#toLang').innerHTML = langList
-	} else {
-		document.querySelector('#fromLang').innerHTML = `<option value="none">No Languages</option>`
-		document.querySelector('#toLang').innerHTML = `<option value="none">No Languages</option>`
-	}
-
-	// Translation
-	$('#translateText').click((e) => {
-		e.preventDefault();
-		if (document.querySelector('#fromLang').value === 'text') return alert('Please select a language to translate from')
-		if (document.querySelector('#toLang').value === 'text') return alert('Please select a language to translate to')
-		grecaptcha.ready(function() {
-			grecaptcha.execute(grecaptchaSiteKey, {action: 'submit'}).then(async function(token) {
-				const leftSide = inputEditor.getValue()
-				const rightSide = outputEditor.getValue()
-				outputEditor.setValue('')
-				const translation = await translateCode(rightSide, leftSide, document.querySelector('#fromLang').value, document.querySelector('#toLang').value)
-				!translation.error ? outputEditor.setValue(translation) : 
-					outputEditor.setValue(
+// Translation
+$('#translateText').click((e) => {
+	e.preventDefault();
+	if (document.querySelector('#fromLang').value === 'text') return alert('Please select a language to translate from')
+	if (document.querySelector('#toLang').value === 'text') return alert('Please select a language to translate to')
+	grecaptcha.ready(function() {
+		grecaptcha.execute(grecaptchaSiteKey, {action: 'submit'}).then(async function(token) {
+			const leftSide = inputEditor.getValue()
+			const rightSide = outputEditor.getValue()
+			outputEditor.setValue('')
+			const translation = await translateCode(rightSide, leftSide, document.querySelector('#fromLang').value, document.querySelector('#toLang').value)
+			!translation.error ? outputEditor.setValue(translation) : 
+				outputEditor.setValue(
 `Translation Failed, check your parameters:
 ${translation.fromLang}
 -----------------------
@@ -135,47 +130,46 @@ ${translation.leftSide}
 ${translation.toLang}
 -----------------------
 ${translation.rightSide}`
-					)
-			});
+				)
 		});
-	})
+	});
+})
 
-  	$('#clearText').click((e) => {
-		e.preventDefault();
-		grecaptcha.ready(function() {
-			grecaptcha.execute(grecaptchaSiteKey, {action: 'submit'}).then(function(token) {
-				inputEditor.setValue('')
-				outputEditor.setValue('')
-			});
+$('#clearText').click((e) => {
+	e.preventDefault();
+	grecaptcha.ready(function() {
+		grecaptcha.execute(grecaptchaSiteKey, {action: 'submit'}).then(function(token) {
+			inputEditor.setValue('')
+			outputEditor.setValue('')
 		});
-  	})
-	
-	$('#mc-embedded-subscribe-form').submit((e) => {
-		e.preventDefault()
-		grecaptcha.ready(function() {
-			grecaptcha.execute(grecaptchaSiteKey, {action: 'submit'}).then(function(token) {
-				const form = $('#mc-embedded-subscribe-form')
-				$.ajax({
-					type: 'GET',
-					contentType: 'application/json',
-					url: form.attr('action'),
-					data: form.serialize(),
-					dataType: 'jsonp',
-					jsonp: 'c',
-					cache: false,
-					error: (e) => console.log(e),
-					success: (data) => {
-						if (data.result === 'success') {
-							$('#mc-update-message').css({ display: 'block', color: 'green' })
-							$('#mc-embedded-subscribe-form').css({ display: 'none' })
-							$('#mc-update-message').html('Thank you for subscribing!')
-						} else {
-							$('#mc-update-message').css({ display: 'block', color: 'red' })
-							$('#mc-update-message').html(data.msg.includes('already subscribed') === true ? 'You are already subscribed.' : 'Failed to subscribe due to an error. Please try again later.')
-						}
+	});
+})
+
+$('#mc-embedded-subscribe-form').submit((e) => {
+	e.preventDefault()
+	grecaptcha.ready(function() {
+		grecaptcha.execute(grecaptchaSiteKey, {action: 'submit'}).then(function(token) {
+			const form = $('#mc-embedded-subscribe-form')
+			$.ajax({
+				type: 'GET',
+				contentType: 'application/json',
+				url: form.attr('action'),
+				data: form.serialize(),
+				dataType: 'jsonp',
+				jsonp: 'c',
+				cache: false,
+				error: (e) => console.log(e),
+				success: (data) => {
+					if (data.result === 'success') {
+						$('#mc-update-message').css({ display: 'block', color: 'green' })
+						$('#mc-embedded-subscribe-form').css({ display: 'none' })
+						$('#mc-update-message').html('Thank you for subscribing!')
+					} else {
+						$('#mc-update-message').css({ display: 'block', color: 'red' })
+						$('#mc-update-message').html(data.msg.includes('already subscribed') === true ? 'You are already subscribed.' : 'Failed to subscribe due to an error. Please try again later.')
 					}
-				})
-			});
+				}
+			})
 		});
-	})
-});
+	});
+})

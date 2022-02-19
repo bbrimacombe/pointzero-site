@@ -28,8 +28,6 @@ int main() {
 ]
 
 const updateSample = (sampleName) => {
-    const inputEditor = $('#inputText').data('inputEditor')
-    const outputEditor = $('#outputText').data('outputEditor')
     if (sampleName === 'none') {
         inputEditor.setValue('-- No Code --')
         outputEditor.setValue('-- No Code --')
@@ -42,7 +40,6 @@ const updateSample = (sampleName) => {
 }
 
 const langSampleChange = (fromLang) => {
-    const inputEditor = $('#inputText').data('inputEditor')
     inputEditor.setOption('mode', langs.filter((lang) => lang.name === fromLang)[0].mode)
     let sampleNames = []
     sampleData.forEach((sample) => {
@@ -72,7 +69,6 @@ document.querySelector('#fromLang').addEventListener('change', () => {
 
 document.querySelector('#toLang').addEventListener('change', () => {
     const toLang = document.querySelector('#toLang').value
-    const outputEditor = $('#outputText').data('outputEditor')
     outputEditor.setOption('mode', langs.filter((lang) => lang.name === toLang)[0].mode)
 })
 
