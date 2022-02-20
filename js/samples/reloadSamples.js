@@ -11,15 +11,14 @@ export const reloadSamples = () => {
             sampleNames.push({displayName, name})
         }
     })
-    let newSampleList = ""
+    let newSampleList = '<option value="none">Custom</option>'
     if (sampleNames.length) {
         sampleNames.forEach((sample) => {
             newSampleList += `<option value=${sample.name}>${sample.displayName}</option>`
         })
         document.querySelector('#samplesList').innerHTML = newSampleList
-        updateSample(sampleNames[0].name)
     } else {
         document.querySelector('#samplesList').innerHTML = `<option value="none">No Samples</option>`
-        updateSample('none')
     }
+    updateSample('none')
 }

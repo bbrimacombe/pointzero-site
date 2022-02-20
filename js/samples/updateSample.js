@@ -3,8 +3,8 @@ import { inputEditor, outputEditor } from '../codemirror.js'
 
 export const updateSample = (sampleName) => {
     if (sampleName === 'none') {
-        inputEditor.setValue('-- No Code --')
-        outputEditor.setValue('-- No Code --')
+        inputEditor.setValue('Enter code here')
+        outputEditor.setValue('Waiting...')
         return false
     }
     console.log(sampleName)
