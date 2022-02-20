@@ -4,7 +4,7 @@ export let sampleData = [
     //{ commonId: 1, name: "hello_world_python", displayName: "Hello World", fromLang: "python", fromCode: 'print("Hello, World!")' },
 ]
 
-const langByExtension = [
+export const langByExtension = [
     { fileExt: 'c', lang: 'c' },
     { fileExt: 'cpp', lang: 'cpp' },
     { fileExt: 'java', lang: 'java' },
