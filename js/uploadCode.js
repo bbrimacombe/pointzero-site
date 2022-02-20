@@ -1,5 +1,6 @@
 import { langByExtension } from './samples/sampleData.js'
 import { inputEditor } from './codemirror.js'
+import { onLangChange } from './samples/onLangChange.js'
 
 const uploadCodeElement = document.querySelector('#uploadCode')
 
@@ -10,7 +11,10 @@ uploadCodeElement.addEventListener('change', (e) => {
     const getLangByExt = langByExtension.filter((fileByExt) => fileByExt.fileExt === fileExt)
     if (!getLangByExt.length) return alert('File extension not supported')
     const fromLang = document.querySelector('#fromLang').value
-    if (fromLang !== getLangByExt[0].lang) return alert('File extension does not match selected language')
+    if (fromLang !== getLangByExt[0].lang) {
+        document.querySelector('#fromLang').value = getLangByExt[0].lang
+        onLangChange(getLangByExt[0].lang)
+    }
     const input = e.target
     if (!'files' in input || input.files.length <= 0) return alert('Invalid file upload')
     const file = input.files[0]
