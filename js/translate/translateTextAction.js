@@ -13,18 +13,7 @@ export const translateTextAction = (e) => {
 			outputEditor.setValue('')
 			const translation = await translateCode(rightSide, leftSide, document.querySelector('#fromLang').value, document.querySelector('#toLang').value)
 			!translation.error ? outputEditor.setValue(translation) : 
-				outputEditor.setValue(
-`Translation Failed, check your parameters:
-${translation.fromLang}
------------------------
-${translation.leftSide}
-*****************************
-*****************************
-*****************************
-${translation.toLang}
------------------------
-${translation.rightSide}`
-				)
+				outputEditor.setValue('Still waiting......')
 		})
 	})
 }
