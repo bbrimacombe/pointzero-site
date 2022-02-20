@@ -2,7 +2,7 @@ import { sampleData } from './sampleData.js'
 import { inputEditor, outputEditor } from '../codemirror.js'
 
 export const updateSample = (sampleName) => {
-    if (sampleName === 'none') {
+    if (sampleName === 'none' || sampleName === 'upload') {
         inputEditor.setValue('Enter code here')
         outputEditor.setValue('Waiting...')
         return false

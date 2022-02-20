@@ -2,6 +2,7 @@ import { onLangChange } from './onLangChange.js'
 import { updateSample } from './updateSample.js'
 import { langs } from '../langs.js'
 import { outputEditor } from '../codemirror.js'
+import { uploadCodeElement } from '../uploadCode.js'
 
 document.querySelector('#fromLang').addEventListener('change', () => {
     const fromLang = document.querySelector('#fromLang').value
@@ -16,5 +17,6 @@ document.querySelector('#toLang').addEventListener('change', () => {
 
 document.querySelector('#samplesList').addEventListener('change', () => {
     const sampleName = document.querySelector('#samplesList').value
+    if (sampleName === 'upload') return uploadCodeElement.click()
     updateSample(sampleName)
 })

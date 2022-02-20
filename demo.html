@@ -43,23 +43,17 @@
 					</select>
 					<select class="btn" name="samplesList" id="samplesList">
 						<option value="none">Custom</option>
+						<option value="upload">Upload Code</option>
 					</select>
 					<a class="btn" id="clearText">Clear</a>
 					<a class="btn" id="translateText">Translate</a>
 					<img src="img/loading_spinner.svg" id="loading-icon" hidden/>
+					<input type="file" id="uploadCode" name="uploadCode" style="visibility: hidden;display: none;">
 				</div>
 				<div class="buttons-group">
 					<select class="btn" name="toLang" id="toLang">
 						<option value="none">Select Language</option>
 					</select>
-				</div>
-			</div>
-		</div>
-		<div class="new-container">
-			<div class="buttons-row">
-				<div class="buttons-group">
-					<label for="uploadCode">Upload source file:</label>
-					<input type="file" id="uploadCode" name="uploadCode" class="btn">
 				</div>
 			</div>
 		</div>

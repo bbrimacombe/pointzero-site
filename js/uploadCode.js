@@ -2,7 +2,7 @@ import { langByExtension } from './samples/sampleData.js'
 import { inputEditor } from './codemirror.js'
 import { onLangChange } from './samples/onLangChange.js'
 
-const uploadCodeElement = document.querySelector('#uploadCode')
+export const uploadCodeElement = document.querySelector('#uploadCode')
 
 uploadCodeElement.addEventListener('change', (e) => {
     const fakePath = uploadCodeElement.value
