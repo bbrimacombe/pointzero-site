@@ -11,6 +11,7 @@ document.querySelector('#fromLang').addEventListener('change', () => {
 document.querySelector('#toLang').addEventListener('change', () => {
     const toLang = document.querySelector('#toLang').value
     outputEditor.setOption('mode', langs.filter((lang) => lang.name === toLang)[0].mode)
+    outputEditor.setValue('Waiting...')
 })
 
 document.querySelector('#samplesList').addEventListener('change', () => {
