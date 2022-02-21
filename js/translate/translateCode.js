@@ -8,12 +8,13 @@ export const translateCode = async(rightSide, leftSide, fromLang, toLang) => {
 	let res = 'Translation failed.'
 	try {
 		const server = 'https://4ll33gak2g.execute-api.us-west-1.amazonaws.com/dev/pointzero'
+		//const server = 'http://localhost:8080'
 		console.log('Making PointZero API request')
 
 		const newRightSide = (rightSide !== 'Still waiting......' && rightSide !== 'Waiting...') ? rightSide : ''
 		const res = await axios.post(
 			server,
-			{ newRightSide, leftSide, 'from_lang': fromLang, 'to_lang': toLang }
+			{ source: [leftSide], hint: [newRightSide], from_lang: fromLang, to_lang: toLang }
 		)
 
 		res = res.data.replace(/\n *<\/DOCUMENT>$/, '')
