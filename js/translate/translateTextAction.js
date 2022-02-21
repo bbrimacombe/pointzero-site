@@ -10,7 +10,7 @@ export const translateTextAction = (e) => {
 		grecaptcha.execute(grecaptchaSiteKey, {action: 'submit'}).then(async function(token) {
 			const leftSide = inputEditor.getValue()
 			const rightSide = outputEditor.getValue()
-			outputEditor.setValue('')
+			outputEditor.setValue('Waiting...')
 			const translation = await translateCode(rightSide, leftSide, document.querySelector('#fromLang').value, document.querySelector('#toLang').value)
 			!translation.error ? outputEditor.setValue(translation) : 
 				outputEditor.setValue('Still waiting......')
