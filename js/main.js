@@ -5,3 +5,4 @@ import './mailchimpSubscribe.js'
 import './uploadCode.js'
 
 export const grecaptchaSiteKey = '6LcMNoUeAAAAAKCDfuNh0u9r1ZqgpjyZ0s2cTTn2'
+export const showSampleOutput = false
