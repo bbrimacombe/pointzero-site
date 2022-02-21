@@ -5,7 +5,7 @@
 		<link rel="stylesheet" href="style.css">
 		<link href="//cdn-images.mailchimp.com/embedcode/slim-10_7_dtp.css" rel="stylesheet" type="text/css">
 		<style type="text/css">
-		#mc_embed_signup{background: rgb(48, 48, 48); padding: 15px; border: 1px solid black; clear: left; font: 14px Helvetica,Arial,sans-serif; color: #fff; margin: 0 auto; max-width: 700px; }
+		#mc_embed_signup{background: rgb(48, 48, 48); padding: 15px; border: 1px solid black; clear: left; font: 14px Helvetica,Arial,sans-serif; color: #fff; max-width: 700px; }
 		/* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.
 		We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
 		</style>
@@ -38,31 +38,50 @@
 			</div>
 			<div class="buttons-row">
 				<div class="buttons-group">
-					<select class="btn" name="fromLang" id="fromLang">
-						<option value="none">Select Language</option>
-					</select>
-					<select class="btn" name="samplesList" id="samplesList">
-						<option value="none">Custom</option>
-						<option value="upload">Upload Code</option>
-					</select>
-					<a class="btn" id="clearText">Clear</a>
-					<a class="btn" id="translateText">Translate</a>
-					<img src="img/loading_spinner.svg" id="loading-icon" hidden/>
-					<input type="file" id="uploadCode" name="uploadCode" style="visibility: hidden;display: none;">
+					<div>
+						<select class="btn" name="fromLang" id="fromLang">
+							<option value="none">Select Language</option>
+						</select>
+						<select class="btn" name="samplesList" id="samplesList">
+							<option value="none">Custom</option>
+							<option value="upload">Upload Code</option>
+						</select>
+						<a class="btn" id="clearText">Clear</a>
+						<input type="file" id="uploadCode" name="uploadCode" style="visibility: hidden;display: none;">
+					</div>	
 				</div>
 				<div class="buttons-group">
-					<select class="btn" name="toLang" id="toLang">
-						<option value="none">Select Language</option>
-					</select>
+					<div>
+						<a class="btn" id="translateText">Translate</a>
+						<img src="img/loading_spinner.svg" id="loading-icon" hidden/>
+					</div>
+				</div>
+				<div class="buttons-group">
+					<div>
+						<select class="btn" name="toLang" id="toLang">
+							<option value="none">Select Language</option>
+						</select>
+					</div>
 				</div>
 			</div>
 		</div>
 		<div class="new-container">
 			<h1>Welcome to PointZero!</h1>
-			<p>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ultrices tincidunt arcu non sodales neque sodales ut etiam sit. At elementum eu facilisis sed odio morbi. Gravida arcu ac tortor dignissim convallis. In cursus turpis massa tincidunt. Quis commodo odio aenean sed adipiscing diam donec adipiscing. Diam in arcu cursus euismod quis. Odio facilisis mauris sit amet massa vitae tortor condimentum lacinia. Dolor sit amet consectetur adipiscing elit. Id nibh tortor id aliquet lectus proin nibh. Tristique magna sit amet purus gravida quis blandit turpis. Rutrum quisque non tellus orci ac auctor. Egestas maecenas pharetra convallis posuere morbi. Accumsan tortor posuere ac ut consequat semper viverra nam libero. Duis convallis convallis tellus id interdum velit laoreet id donec.
-				Eget aliquet nibh praesent tristique magna. Gravida neque convallis a cras semper auctor. Ut sem nulla pharetra diam sit amet nisl suscipit adipiscing. Libero nunc consequat interdum varius. Fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate sapien. Maecenas pharetra convallis posuere morbi. Eu augue ut lectus arcu bibendum at varius. Est ante in nibh mauris. Sit amet commodo nulla facilisi. Suspendisse sed nisi lacus sed viverra tellus. Enim facilisis gravida neque convallis a cras semper auctor neque. Eu feugiat pretium nibh ipsum consequat nisl vel. Quis viverra nibh cras pulvinar mattis nunc sed. Nunc sed id semper risus in. Morbi tincidunt augue interdum velit euismod in. Urna nec tincidunt praesent semper feugiat nibh sed pulvinar proin. Nisl vel pretium lectus quam id leo in vitae turpis.
-			</p>
+			<ul>
+				<li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+				<li>Aliquam tincidunt mauris eu risus.</li>
+				<li>Vestibulum auctor dapibus neque.</li>
+				<li>Nunc dignissim risus id metus.</li>
+				<li>Cras ornare tristique elit.</li>
+				<li>Vivamus vestibulum ntulla nec ante.</li>
+				<li>Praesent placerat risus quis eros.</li>
+				<li>Fusce pellentesque suscipit nibh.</li>
+				<li>Integer vitae libero ac risus egestas placerat.</li>
+				<li>Vestibulum commodo felis quis tortor.</li>
+				<li>Ut aliquam sollicitudin leo.</li>
+				<li>Cras iaculis ultricies nulla.</li>
+				<li>Donec quis dui at dolor tempor interdum.</li>
+			</ul>
 		</div>
 		<div class="new-container">
 			<!-- Begin Mailchimp Signup Form -->
@@ -94,13 +113,6 @@
 				</form>
 			</div>
 			<!--End mc_embed_signup-->
-		</div>
-		<div class="new-container">
-			<h1>Thanks for using our translator!</h1>
-			<p>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ultrices tincidunt arcu non sodales neque sodales ut etiam sit. At elementum eu facilisis sed odio morbi. Gravida arcu ac tortor dignissim convallis. In cursus turpis massa tincidunt. Quis commodo odio aenean sed adipiscing diam donec adipiscing. Diam in arcu cursus euismod quis. Odio facilisis mauris sit amet massa vitae tortor condimentum lacinia. Dolor sit amet consectetur adipiscing elit. Id nibh tortor id aliquet lectus proin nibh. Tristique magna sit amet purus gravida quis blandit turpis. Rutrum quisque non tellus orci ac auctor. Egestas maecenas pharetra convallis posuere morbi. Accumsan tortor posuere ac ut consequat semper viverra nam libero. Duis convallis convallis tellus id interdum velit laoreet id donec.
-				Eget aliquet nibh praesent tristique magna. Gravida neque convallis a cras semper auctor. Ut sem nulla pharetra diam sit amet nisl suscipit adipiscing. Libero nunc consequat interdum varius. Fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate sapien. Maecenas pharetra convallis posuere morbi. Eu augue ut lectus arcu bibendum at varius. Est ante in nibh mauris. Sit amet commodo nulla facilisi. Suspendisse sed nisi lacus sed viverra tellus. Enim facilisis gravida neque convallis a cras semper auctor neque. Eu feugiat pretium nibh ipsum consequat nisl vel. Quis viverra nibh cras pulvinar mattis nunc sed. Nunc sed id semper risus in. Morbi tincidunt augue interdum velit euismod in. Urna nec tincidunt praesent semper feugiat nibh sed pulvinar proin. Nisl vel pretium lectus quam id leo in vitae turpis.
-			</p>
 		</div>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
