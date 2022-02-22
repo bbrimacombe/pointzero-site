@@ -105,7 +105,12 @@ input[type="text"], input[type="submit"]:active {
 .CodeMirror {
   height: 40em;
   border: 1px solid #777;
+  background: rgb(10, 10, 10) !important;
   font-size: 12px;
+}
+
+.CodeMirror-gutter {
+  background: rgb(12, 12, 12) !important;
 }
 
 li + li {
