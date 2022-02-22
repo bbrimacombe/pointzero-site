@@ -53,6 +53,10 @@ body {
 
 .buttons-group:last-child  > div { margin-left: auto;  }
 
+.center-left-btn-grp {
+  margin-right: 120px;
+}
+
 .buttons-group img {
   height: 40px;
   width: 40px;
@@ -121,9 +125,12 @@ li + li {
     grid-template-areas: none;
   }
   .column-left, .column-right {
-    max-width: none;
+    max-width: 100%;
   }
   .CodeMirror {
     margin-top: 25px;
+  }
+  .center-left-btn-grp {
+    margin-right: 0;
   }
 }
