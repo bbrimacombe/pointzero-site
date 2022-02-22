@@ -99,6 +99,6 @@ input[type="text"], input[type="submit"]:active {
 }
 
 .CodeMirror {
-  height: 47em;
+  height: 40em;
   border: 1px solid #777;
 }
