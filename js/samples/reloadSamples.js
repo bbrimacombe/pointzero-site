@@ -1,7 +1,8 @@
-import { sampleData } from './sampleData.js'
+import { getRandomInt } from '../utils.js'
 import { updateSample } from './updateSample.js'
 
-export const reloadSamples = () => {
+export const reloadSamples = (sampleData) => {
+    if (!sampleData.length) return false
     const fromLang = document.querySelector('#fromLang').value
     let sampleNames = []
     sampleData.forEach((sample) => {
@@ -16,7 +17,12 @@ export const reloadSamples = () => {
         sampleNames.forEach((sample) => {
             newSampleList += `<option value=${sample.name}>${sample.displayName}</option>`
         })
+        const sample = getRandomInt(0, sampleNames.length)
+        document.querySelector('#samplesList').innerHTML = newSampleList
+        document.querySelector('#samplesList').value = sampleNames[sample].name
+        updateSample(sampleNames[sample].name)
+    } else {
+        document.querySelector('#samplesList').innerHTML = newSampleList
+        updateSample('none')
     }
-    document.querySelector('#samplesList').innerHTML = newSampleList
-    updateSample('none')
 }
