@@ -19,11 +19,12 @@ body {
   position: relative;
   display: block;
   color: #fff;
-  margin: 0 5%;
+  margin: 50px 5%;
 }
 
 .header {
   grid-area: header;
+  margin-bottom: 25px;
 }
 
 .column-left {
