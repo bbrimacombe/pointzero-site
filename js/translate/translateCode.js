@@ -5,19 +5,18 @@ import { showSampleOutput } from '../main.js'
 
 export const translateCode = async(rightSide, leftSide, fromLang, toLang) => {
 	setIsLoading(true)
-	let res = 'Translation failed.'
+	let res
 	try {
 		const server = 'https://4ll33gak2g.execute-api.us-west-1.amazonaws.com/dev/pointzero'
 		//const server = 'http://localhost:8080'
 		console.log('Making PointZero API request')
 
-		const newRightSide = (rightSide !== 'Still waiting......' && rightSide !== 'Waiting...') ? rightSide : ''
-		const res = await axios.post(
-			server,
-			{ source: [leftSide], hint: [newRightSide], from_lang: fromLang, to_lang: toLang }
-		)
+		const reqData = { source: [leftSide], from_lang: fromLang, to_lang: toLang }
+		if (typeof rightSide === 'string' && rightSide !== 'Still waiting......' && rightSide !== 'Waiting...' && rightSide.length > 0)
+			reqData.hint = [rightSide]
 
-		res = res.data.replace(/\n *<\/DOCUMENT>$/, '')
+		res = await axios.post(server, reqData)
+		res = res.data[0].replace(/\n *<\/DOCUMENT>$/, '')
 	} catch (e) {
 		console.log(e)
 		if (showSampleOutput === true) {
