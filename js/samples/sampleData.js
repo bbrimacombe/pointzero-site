@@ -31,6 +31,8 @@ const filesToLoad = [
 
 const samplesLocation = 'https://pointzero.ai/samples/'
 
+let loadedFiles = 0
+
 filesToLoad.forEach((file) => {
     axios.get(samplesLocation + file.fromFile)
     .then((response) => {
@@ -41,7 +43,12 @@ filesToLoad.forEach((file) => {
                 sampleData.push({ commonId: file.commonId, name: file.fromFile, displayName: file.fromFile, fromLang: lang.lang, fromCode: data })
             }
         })
-        reloadSamples()
+        loadedFiles ++
+    })
+    .then(() => {
+        if (filesToLoad.length === loadedFiles) {
+            reloadSamples(sampleData)
+        }
     })
     .catch((e) => console.log(e))
 })
