@@ -103,6 +103,7 @@ input[type="text"], input[type="submit"]:active {
 .CodeMirror {
   height: 40em;
   border: 1px solid #777;
+  font-size: 12px;
 }
 
 li + li {
