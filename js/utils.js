@@ -1,8 +1,8 @@
-export const setIsLoading = (bool) => {
-	if (bool) {
-		$('#loading-icon').show();
+export const setIsLoading = (showLoading) => {
+	if (showLoading) {
+		document.querySelector('#loading-icon').style.visibility = 'visible'
 	} else {
-		$('#loading-icon').hide();
+		document.querySelector('#loading-icon').style.visibility = 'hidden'
 	}
 }
 
