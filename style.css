@@ -69,6 +69,7 @@ body {
   color: #ffffff;
   padding:11px 23px;
   text-decoration: none;
+  margin: 1px;
 }
 
 .btn:hover {
@@ -102,4 +103,19 @@ input[type="text"], input[type="submit"]:active {
 .CodeMirror {
   height: 40em;
   border: 1px solid #777;
+}
+
+@media only screen and (max-width: 600px) {
+  #mc_embed_signup {
+    max-width: none;
+  }
+  .grid-container {
+    display: block;
+    grid-template-columns: none;
+    grid-template-rows: none;
+    grid-template-areas: none;
+  }
+  .column-left, .column-right {
+    max-width: none;
+  }
 }
