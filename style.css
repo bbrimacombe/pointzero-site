@@ -1,5 +1,5 @@
 body {
-  background-color: #282221;
+  background-color: #505050;
   color: #7B342D; //77777
   font-family: arial;
 }
@@ -64,7 +64,7 @@ body {
 }
 
 .btn {
-  background: rgb(48, 48, 48);
+  background: rgb(191, 191, 191);
   border: 1px solid black;
   display: inline-block;
   cursor: pointer;
@@ -75,7 +75,7 @@ body {
 }
 
 .btn:hover {
-  background-color: #2C2C2C;
+  background-color: #B50717;
 }
 
 .btn:active {
