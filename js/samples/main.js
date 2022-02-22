@@ -3,6 +3,7 @@ import { updateSample } from './updateSample.js'
 import { langs } from '../langs.js'
 import { outputEditor } from '../codemirror.js'
 import { uploadCodeElement } from '../uploadCode.js'
+import './sampleData.js'
 
 document.querySelector('#fromLang').addEventListener('change', () => {
     const fromLang = document.querySelector('#fromLang').value
