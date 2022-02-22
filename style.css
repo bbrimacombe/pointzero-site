@@ -105,6 +105,10 @@ input[type="text"], input[type="submit"]:active {
   border: 1px solid #777;
 }
 
+li + li {
+  margin-top: 15px;
+}
+
 @media only screen and (max-width: 600px) {
   #mc_embed_signup {
     max-width: none;
@@ -117,5 +121,8 @@ input[type="text"], input[type="submit"]:active {
   }
   .column-left, .column-right {
     max-width: none;
+  }
+  .CodeMirror {
+    margin-top: 25px;
   }
 }
