@@ -1,5 +1,7 @@
+import { getRandomInt } from './utils.js'
+import { inputEditor, outputEditor } from './codemirror.js'
+
 export const langs = [
-	{ name: 'text', displayName: 'Select Language', mode: 'text'},
 	{ name: 'java', displayName: 'Java', mode: 'text/x-java'},
 	{ name: 'python', displayName: 'Python', mode: 'text/x-python'},
 	{ name: 'c', displayName: 'C', mode: 'text/x-csrc'},
@@ -14,7 +16,11 @@ if (langs.length) {
 	})
 	document.querySelector('#fromLang').innerHTML = langList
 	document.querySelector('#toLang').innerHTML = langList
-} else {
-	document.querySelector('#fromLang').innerHTML = `<option value="none">No Languages</option>`
-	document.querySelector('#toLang').innerHTML = `<option value="none">No Languages</option>`
+
+	const fromLang = getRandomInt(0, langs.length)
+	const toLang = getRandomInt(0, langs.length)
+	document.querySelector('#fromLang').value = langs[fromLang].name
+	document.querySelector('#toLang').value = langs[toLang].name
+	inputEditor.setOption('mode', langs[fromLang].mode)
+	outputEditor.setOption('mode', langs[toLang].mode)
 }
