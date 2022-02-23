@@ -65,14 +65,14 @@ body {
 
 .btn {
   background: rgb(60,60,60);
-  border: 1px solid black;
+  //border: 1px solid black;
   display: inline-block;
   cursor: pointer;
   color: #fff;
   padding: 10px 20px;
   text-decoration: none;
   margin: 4px 2px;
-  border-radius: 2px
+  border-radius: 3px
 }
 
 .btn:hover {
