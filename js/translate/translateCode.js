@@ -18,7 +18,7 @@ export const translateCode = async(rightSide, leftSide, fromLang, toLang) => {
 		res = await axios.post(server, reqData)
 		res = typeof res.data === 'string' ? res.data : res.data[0].replace(/\n *<\/DOCUMENT>$/, '')
 	} catch (e) {
-		console.log(e)
+		console.log(e.response)
 		if (showSampleOutput === true) {
 			await new Promise(resolve => setTimeout(resolve, 3000));
 			// res = { error: e, rightSide, leftSide, fromLang, toLang }
