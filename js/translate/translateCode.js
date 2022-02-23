@@ -7,7 +7,7 @@ export const translateCode = async(rightSide, leftSide, fromLang, toLang) => {
 	setIsLoading(true)
 	let res
 	try {
-		const server = 'https://xxckei7g4f.execute-api.us-west-1.amazonaws.com/'
+		const server = 'https://xxckei7g4f.execute-api.us-west-1.amazonaws.com/pointzero/'
 		//const server = 'http://localhost:8080'
 		console.log('Making PointZero API request')
 
