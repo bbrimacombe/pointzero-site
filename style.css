@@ -76,7 +76,7 @@ body {
 }
 
 .btn:hover {
-  background-color: #4a1e1e;
+  background-color: rgb(84,72,72);
 }
 
 .btn:active {
