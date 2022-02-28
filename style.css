@@ -1,5 +1,5 @@
 body {
-  background-color: #1e1e1e;
+  background-color: #212121;
   color: #7B342D;
   font-family: arial;
 }
@@ -64,7 +64,7 @@ body {
 }
 
 .btn {
-  background: rgb(60,60,60);
+  background: rgb(65,65,65);
   /*border: 1px solid black;*/
   display: inline-block;
   cursor: pointer;
@@ -76,7 +76,7 @@ body {
 }
 
 .btn:hover {
-  background-color: rgb(84,72,72);
+  background-color: rgb(82,75,75);
 }
 
 .btn:active {
@@ -111,7 +111,7 @@ input[type="text"], input[type="submit"]:active {
 }
 
 .CodeMirror-gutter {
-  background: rgb(12, 12, 12) !important;
+  background: rgb(13, 13, 13) !important;
 }
 
 li + li {
