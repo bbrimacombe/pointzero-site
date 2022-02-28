@@ -7,7 +7,7 @@ export const translateCode = async(rightSide, leftSide, fromLang, toLang) => {
 	setIsLoading(true)
 	let res
 	try {
-		const server = 'https://p85avenb0e.execute-api.us-west-1.amazonaws.com/dev/pointzero'
+		const server = 'https://api.pointzero.ai/'
 		//const server = 'http://localhost:8080'
 		console.log('Making PointZero API request')
 
@@ -16,6 +16,7 @@ export const translateCode = async(rightSide, leftSide, fromLang, toLang) => {
 			reqData.hint = [rightSide]
 
 		res = await axios.post(server, reqData)
+		console.log(reqData)
 		res = typeof res.data === 'string' ? res.data : res.data[0].replace(/\n *<\/DOCUMENT>$/, '')
 	} catch (e) {
 		console.log(e.response)
