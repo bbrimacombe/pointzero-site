@@ -111,7 +111,7 @@ input[type="text"], input[type="submit"]:active {
 }
 
 .CodeMirror-gutter {
-  background: rgb(13, 13, 13) !important;
+  background: rgb(12, 12, 12) !important;
 }
 
 li + li {
