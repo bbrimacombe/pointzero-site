@@ -15,8 +15,8 @@ export const translateCode = async(rightSide, leftSide, fromLang, toLang) => {
 		if (typeof rightSide === 'string' && rightSide !== 'Still waiting......' && rightSide !== 'Waiting...' && rightSide.length > 0)
 			reqData.hint = [rightSide]
 
-		res = await axios.post(server, reqData)
 		console.log(reqData)
+		res = await axios.post(server, reqData)
 		res = typeof res.data === 'string' ? res.data : res.data[0].replace(/\n *<\/DOCUMENT>$/, '')
 	} catch (e) {
 		console.log(e.response)
