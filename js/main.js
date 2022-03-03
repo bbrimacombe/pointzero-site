@@ -18,4 +18,5 @@ export async function verifyReCaptchaV3(token) {
     } catch (e) {
         console.log(e.response)
     }
+    return isHuman
 }
