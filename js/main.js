@@ -12,7 +12,8 @@ export const showSampleOutput = false
 export async function verifyReCaptchaV3(token) {
     let isHuman = false
     try {
-        const res = await axios.post(`https://www.google.com/recaptcha/api/siteverify?secret=${grecaptchaSecretKey}&response=${token}`)
+        const res = await axios.post(`https://www.google.com/recaptcha/api/siteverify`,
+            { secret: grecaptchaSecretKey, response: token })
         console.log(res.data)
         isHuman = res.data.success === true && res.data.score >= scoreLimit ? true : false
     } catch (e) {
