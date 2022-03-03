@@ -6,7 +6,7 @@ import './uploadCode.js'
 
 export const grecaptchaSiteKey = '6LcMNoUeAAAAAKCDfuNh0u9r1ZqgpjyZ0s2cTTn2'
 export const grecaptchaSecretKey = '6LcMNoUeAAAAAGLn6u86pAQt5BreUHQwFA4EYYyg'
-const scoreLimit = 6.0
+const scoreLimit = 0.6
 export const showSampleOutput = false
 
 export async function verifyReCaptchaV3(token) {
@@ -14,7 +14,7 @@ export async function verifyReCaptchaV3(token) {
     try {
         const res = await axios.post(`https://www.google.com/recaptcha/api/siteverify?secret=${grecaptchaSecretKey}&response=${token}`)
         console.log(res.data)
-        isHuman =  res.data.success
+        isHuman =  res.data.score >= scoreLimit ? res.data.success : false
     } catch (e) {
         console.log(e.response)
     }
