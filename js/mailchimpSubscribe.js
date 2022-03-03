@@ -5,7 +5,7 @@ const mailChimpSubscribeElement = document.querySelector('#mc-embedded-subscribe
 const mcSubscribe = (e) => {
 	e.preventDefault()
 	grecaptcha.ready(function() {
-		grecaptcha.execute(grecaptchaSiteKey, {action: 'mcSubscribeForm'}).then(function(token) {
+		grecaptcha.execute(grecaptchaSiteKey, {action: 'mcSubscribeForm'}).then(async function(token) {
 			let isHuman = await verifyReCaptchaV3(token)
 			if (!isHuman) return alert('Request verification failed')
 			const form = $('#mc-embedded-subscribe-form')
