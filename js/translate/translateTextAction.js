@@ -8,7 +8,7 @@ export const translateTextAction = (e) => {
 	if (document.querySelector('#toLang').value === 'text') return alert('Please select a language to translate to')
 	grecaptcha.ready(function() {
 		grecaptcha.execute(grecaptchaSiteKey, {action: 'translateTextAction'}).then(async function(token) {
-			let isHuman = verifyReCaptchaV3(token)
+			let isHuman = await verifyReCaptchaV3(token)
 			if (!isHuman) return alert('Request verification failed')
 			const leftSide = inputEditor.getValue()
 			const rightSide = outputEditor.getValue()
